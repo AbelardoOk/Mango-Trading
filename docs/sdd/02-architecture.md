@@ -77,9 +77,18 @@ Target structure per ERS §2.1: `components, pages, services, hooks, contexts, r
 | Mobile bottom nav | `@media(max-width:800px)` in `mango-trading.html` | Replica prototype `mobilebar` |
 
 ## 2.5 Deployment View
-- `server`: `./mvnw spring-boot:run` → `8080`; `docker-compose.yaml` placeholder.
-- `web`: `bun dev` → `3000`; `bun run build` → `.next/`.
-- Env: `NEXT_PUBLIC_API_URL`, `spring.datasource.url`, `jwt.secret`.
+
+```
+Browser ── :3000 ──► [web] Next ── NEXT_PUBLIC_API_URL http://localhost:8080 ──► [server] :8080 ──► [db] postgres:5432/mango_trading
+              │              mango-net  (browser→server via localhost)                │  pgdata volume
+```
+
+- **Prod:** `docker compose -f docker-compose.yaml up --build -d` — `server/Dockerfile` (eclipse-temurin:17 JRE) + `web/Dockerfile` (oven/bun:1.3.6 standalone, `output:"standalone"` in `next.config.ts:4`), `postgres:16-alpine` + `pgdata` volume, healthchecks.
+- **Dev:** `docker compose up --build` (merges `docker-compose.override.yaml`) — `server` `./mvnw spring-boot:run` live (devtools) + `web` `bun run dev` hot-reload + Tailwind watch, volumes `./server/src:/app/src` + `./web:/app`.
+- **DB Admin:** `docker compose --profile tools up -d` → `pgAdmin :5050` (`dpage/pgadmin4:8`).
+- **Env:** `.env` required (see `.env.example`), `SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/mango_trading` inside compose (vs `localhost` outside), `JWT_SECRET`, `NEXT_PUBLIC_API_URL=http://localhost:8080` (browser).
+- **Local without Docker:** `server: ./mvnw spring-boot:run` → `8080`; `web: bun dev` → `3000`.
+- Env keys: `NEXT_PUBLIC_API_URL`, `SPRING_DATASOURCE_URL/USERNAME/PASSWORD`, `JWT_SECRET`, `POSTGRES_*`, `PGADMIN_*`.
 
 ## 2.6 Constraints (ERS §2.4)
 - Java 17+, React+TS separate, PostgreSQL real, REST JSON, Spring Security for admin, virtual money only.

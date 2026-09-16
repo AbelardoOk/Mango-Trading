@@ -1,0 +1,9 @@
+# env (required, see .env.example)
+.env
+
+# docker volumes handled by compose
+
+# IDE
+.idea/
+.vscode/
+*.log

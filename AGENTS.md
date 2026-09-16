@@ -33,9 +33,19 @@
 ## Quick Commands
 
 ```bash
-# backend
+# env (required)
+cp .env.example .env   # then edit secrets
+
+# docker — dev (hot-reload, override)
+docker compose up --build                # web:3000 + server:8080 + db:5432
+docker compose --profile tools up -d     # + pgAdmin :5050
+
+# docker — prod (no override)
+docker compose -f docker-compose.yaml up --build -d
+
+# backend (without docker)
 cd server && ./mvnw test               # H2, must be green
-# frontend
+# frontend (without docker)
 cd web && bun run lint && npx tsc --noEmit
 # openapi
 npx swagger-cli validate docs/sdd/openapi.yaml

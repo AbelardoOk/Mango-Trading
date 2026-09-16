@@ -1,0 +1,10 @@
+target
+.mvn/wrapper/maven-wrapper.jar
+.git
+.gitignore
+HELP.md
+*.log
+.idea
+.settings
+.classpath
+.project
