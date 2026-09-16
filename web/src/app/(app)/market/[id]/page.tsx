@@ -80,23 +80,23 @@ export default function TradePage() {
             <span className="text-xs bg-[#e8f1eb] text-[#174f3d] px-3 py-1 rounded-full w-fit">{stock.symbol} · {stock.sector}</span>
             <h2 className="text-2xl font-bold">{stock.name}</h2>
             <div className="text-3xl font-bold">{formatMoney(stock.currentPrice)}</div>
-            <p className="text-sm text-[#596b63]">{stock.description}</p>
+            <p className="text-sm text-[#4a5a52]">{stock.description}</p>
             <hr />
             <p className="text-sm">Na carteira: <strong>{owned} ações</strong></p>
             <p className="text-sm">Saldo: <strong>{formatMoney(balance)}</strong></p>
           </div>
           <div className="bg-white rounded-xl border p-6 flex flex-col gap-4">
             <div className="flex bg-[#f5f7f3] rounded-lg p-1">
-              <button onClick={() => onTabChange("buy")} className={`flex-1 py-2 rounded-lg font-semibold ${tab === "buy" ? "bg-[#174f3d] text-white" : "text-[#596b63]"}`}>Comprar</button>
-              <button onClick={() => onTabChange("sell")} className={`flex-1 py-2 rounded-lg font-semibold ${tab === "sell" ? "bg-[#174f3d] text-white" : "text-[#596b63]"}`}>Vender</button>
+              <button onClick={() => onTabChange("buy")} className={`flex-1 py-2 rounded-lg font-semibold ${tab === "buy" ? "bg-[#174f3d] text-white" : "text-[#4a5a52]"}`}>Comprar</button>
+              <button onClick={() => onTabChange("sell")} className={`flex-1 py-2 rounded-lg font-semibold ${tab === "sell" ? "bg-[#174f3d] text-white" : "text-[#4a5a52]"}`}>Vender</button>
             </div>
             <h3 className="font-semibold">Nova {tab === "buy" ? "compra" : "venda"}</h3>
             <ApiErrorAlert error={error} onClose={() => setError(null)} />
             {success && <div className="bg-[#e8f1eb] text-[#174f3d] p-3 rounded-lg">{success}</div>}
             <label className="flex flex-col gap-2">
               Quantidade
-              <input type="number" min={1} value={qty} onChange={(e) => onQtyChange(Number(e.target.value))} className="border border-[#9bada1] rounded-lg p-3" />
-              <span className="text-xs text-[#596b63]">{tab === "sell" ? `Você possui ${owned} ações.` : "Informe quantidade inteira >0"}</span>
+              <input type="number" min={1} value={qty} onChange={(e) => onQtyChange(Number(e.target.value))} className="border border-[#6d7f75] rounded-lg p-3" />
+              <span className="text-xs text-[#4a5a52]">{tab === "sell" ? `Você possui ${owned} ações.` : "Informe quantidade inteira >0"}</span>
             </label>
             <div className="flex flex-col gap-2 text-sm">
               <div className="flex justify-between"><span>Preço unitário</span><strong>{formatMoney(stock.currentPrice)}</strong></div>

@@ -17,4 +17,6 @@ public interface StockRepository extends JpaRepository<Stock, Long> {
     List<Stock> findByActiveTrue();
 
     List<Stock> findBySector(String sector);
+
+    List<Stock> findBySectorAndActiveTrue(String sector);
 }

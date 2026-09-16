@@ -1,16 +1,16 @@
 "use client";
-import { useState } from "react";
+import { ApiErrorAlert } from "@/components/ApiError";
+import { useAuth } from "@/hooks/useAuth";
+import { ApiError } from "@/types/api";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/hooks/useAuth";
-import { ApiErrorAlert } from "@/components/ApiError";
-import { ApiError } from "@/types/api";
+import { useState } from "react";
 
 export default function LoginPage() {
   const { login } = useAuth();
   const router = useRouter();
-  const [email, setEmail] = useState("ana@email.com");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
 
@@ -38,7 +38,13 @@ export default function LoginPage() {
       <section className="bg-[#172e27] text-white p-8 md:p-12 flex flex-col gap-6">
         <div className="logo text-[#f5ac45] text-3xl font-bold">mango.</div>
         <span className="eyebrow text-[#c7d7cc] text-xs tracking-widest">SEU PRIMEIRO PASSO NO MERCADO</span>
-        <h1 className="text-4xl leading-tight">Aprenda.<br />Negocie.<br /><span className="text-[#f5ac45]">Evolua.</span></h1>
+        <h1 className="text-4xl leading-tight">
+          Aprenda.
+          <br />
+          Negocie.
+          <br />
+          <span className="text-[#f5ac45]">Evolua.</span>
+        </h1>
         <p className="text-[#c7d7cc]">Um mercado fictício para testar suas decisões.</p>
       </section>
       <section className="flex items-center justify-center p-6 md:p-12 bg-[#f5f7f3]">
@@ -48,20 +54,43 @@ export default function LoginPage() {
           <ApiErrorAlert error={error} onClose={() => setError(null)} />
           <label className="field">
             E-mail
-            <input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="border border-[#9bada1] rounded-lg p-3 w-full" />
+            <input
+              id="email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="border border-[#6d7f75] rounded-lg p-3 w-full"
+            />
           </label>
           <label className="field">
             Senha
-            <input id="password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="border border-[#9bada1] rounded-lg p-3 w-full" />
+            <input
+              id="password"
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="border border-[#6d7f75] rounded-lg p-3 w-full"
+            />
           </label>
-          <button type="submit" disabled={loading} className="btn bg-[#174f3d] text-white rounded-lg py-3 font-semibold disabled:opacity-50">
+          <button
+            type="submit"
+            disabled={loading}
+            className="btn bg-[#174f3d] text-white rounded-lg py-3 font-semibold disabled:opacity-50"
+          >
             {loading ? "Entrando..." : "Entrar →"}
           </button>
           <p className="text-sm text-center">
-            Ainda não tem conta? <Link href="/register" className="text-[#174f3d] font-semibold">Criar conta</Link>
+            Ainda não tem conta?{" "}
+            <Link href="/register" className="text-[#174f3d] font-semibold">
+              Criar conta
+            </Link>
           </p>
           <hr />
-          <Link href="/guide" className="text-center text-sm text-[#596b63]">Guia do protótipo →</Link>
+          <Link href="/guide" className="text-center text-sm text-[#4a5a52]">
+            Guia do protótipo →
+          </Link>
         </form>
       </section>
     </main>

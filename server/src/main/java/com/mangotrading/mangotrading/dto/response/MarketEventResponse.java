@@ -5,7 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Data
 @NoArgsConstructor
@@ -19,4 +21,22 @@ public class MarketEventResponse {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private LocalDateTime createdAt;
+
+    // Strategic fields
+    private String recurrenceType;
+    private LocalTime dailyTime;
+    private Integer randomMinMinutes;
+    private Integer randomMaxMinutes;
+    private Integer durationMinutes;
+    private String scope;
+    private String sector;
+    private BigDecimal priceDeltaPercent;
+    private String direction;
+    private Boolean enabled;
+    private LocalDateTime nextRunAt;
+    private LocalDateTime lastRunAt;
+    private Integer visibilityMinutes;
+    private String daysOfWeek;
+    private String status; // SCHEDULED, UPCOMING, ACTIVE, ENDED (computed)
+    private Long secondsToStart; // for UPCOMING countdown
 }

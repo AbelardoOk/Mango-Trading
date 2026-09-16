@@ -19,7 +19,7 @@ export function AuthGuard({ children, requireAdmin = false }: { children: React.
     }
   }, [isAuthenticated, isAdmin, loading, router, pathname, requireAdmin]);
 
-  if (loading) return <div className="p-8 text-center text-sm text-[#596b63]">Carregando...</div>;
+  if (loading) return <div className="p-8 text-center text-sm text-[#4a5a52]">Carregando...</div>;
   if (!isAuthenticated) return null;
   if (requireAdmin && !isAdmin) return null;
   return <>{children}</>;

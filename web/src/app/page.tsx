@@ -9,12 +9,21 @@ export default function Home() {
       </div>
       <div className="flex-1 flex flex-col justify-center gap-6 max-w-3xl">
         <span className="text-[#f5ac45] text-xs tracking-widest">APRENDA. NEGOCIE. EVOLUA.</span>
-        <h1 className="text-5xl md:text-6xl font-bold leading-tight">O mercado é fictício.<br />A experiência é sua.</h1>
+        <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+          O mercado é fictício.
+          <br />A experiência é sua.
+        </h1>
         <p className="text-[#c7d7cc]">Simulação com ações fictícias, dinheiro virtual M$ e ranking por patrimônio.</p>
         <div className="flex gap-4 flex-wrap">
-          <Link href="/login" className="bg-[#f5ac45] text-[#172e27] px-6 py-3 rounded-lg font-semibold">Explorar como jogador →</Link>
-          <Link href="/register" className="bg-white text-[#172e27] px-6 py-3 rounded-lg">Criar conta</Link>
-          <Link href="/market" className="border border-white text-white px-6 py-3 rounded-lg">Ver mercado</Link>
+          <Link href="/login" className="bg-[#f5ac45] text-[#172e27] px-6 py-3 rounded-lg font-semibold">
+            Explorar como jogador →
+          </Link>
+          <Link href="/register" className="bg-white text-[#172e27] px-6 py-3 rounded-lg">
+            Criar conta
+          </Link>
+          <Link href="/market" className="border border-white text-white px-6 py-3 rounded-lg">
+            Ver mercado
+          </Link>
         </div>
       </div>
       <div className="flex justify-between text-xs text-[#c7d7cc] mt-8">

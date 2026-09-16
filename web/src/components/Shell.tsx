@@ -51,7 +51,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </aside>
       <div className="flex-1 md:ml-[232px] flex flex-col min-h-screen">
         <header className="flex justify-between items-center px-6 py-4 bg-white border-b">
-          <span className="text-xs tracking-widest font-bold text-[#596b63]">{isAdmin && pathname.startsWith("/admin") ? "ADMINISTRAÇÃO / ACESSO RESTRITO" : "ÁREA DO JOGADOR"}</span>
+          <span className="text-xs tracking-widest font-bold text-[#4a5a52]">{isAdmin && pathname.startsWith("/admin") ? "ADMINISTRAÇÃO / ACESSO RESTRITO" : "ÁREA DO JOGADOR"}</span>
           <span className="text-sm">{user?.name || ""} {isAdmin && <span className="ml-2 bg-[#fff0d6] text-[#754600] px-2 py-1 rounded text-xs">Administrador</span>}</span>
         </header>
         <main id="main" className="flex-1 p-6 md:p-8 max-w-[1700px] w-full mx-auto flex flex-col gap-6">
@@ -60,7 +60,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </div>
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around py-2 z-50">
         {nav.map((n) => (
-          <Link key={n.href} href={n.href} className={`text-xs py-2 px-3 rounded ${pathname === n.href ? "bg-[#e8f1eb] text-[#174f3d]" : "text-[#596b63]"}`}>
+          <Link key={n.href} href={n.href} className={`text-xs py-2 px-3 rounded ${pathname === n.href ? "bg-[#e8f1eb] text-[#174f3d]" : "text-[#4a5a52]"}`}>
             {n.label.replace("Minha ", "")}
           </Link>
         ))}

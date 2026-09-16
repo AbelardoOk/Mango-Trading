@@ -29,6 +29,12 @@ export function adminUpdateEvent(id: number, data: MarketEventRequest) {
 export function adminDeleteEvent(id: number) {
   return apiFetch<void>(`/api/admin/events/${id}`, { method: "DELETE" });
 }
+export function adminPreviewEvent(id: number, count = 3) {
+  return apiFetch<string[]>(`/api/admin/events/${id}/preview?count=${count}`);
+}
+export function adminTriggerEvent(id: number) {
+  return apiFetch<MarketEventResponse>(`/api/admin/events/${id}/trigger`, { method: "POST" });
+}
 
 export function adminListUsers() {
   return apiFetch<UserResponse[]>("/api/admin/users");

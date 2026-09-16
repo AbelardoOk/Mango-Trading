@@ -43,15 +43,15 @@ export default function RegisterPage() {
           <ApiErrorAlert error={error} onClose={() => setError(null)} />
           <label className="field">
             Nome
-            <input required value={name} onChange={(e) => setName(e.target.value)} className="border border-[#9bada1] rounded-lg p-3 w-full" placeholder="Ana Silva" />
+            <input required value={name} onChange={(e) => setName(e.target.value)} className="border border-[#6d7f75] rounded-lg p-3 w-full" placeholder="Ana Silva" />
           </label>
           <label className="field">
             E-mail
-            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="border border-[#9bada1] rounded-lg p-3 w-full" placeholder="ana@email.com" />
+            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="border border-[#6d7f75] rounded-lg p-3 w-full" placeholder="ana@email.com" />
           </label>
           <label className="field">
             Senha
-            <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="border border-[#9bada1] rounded-lg p-3 w-full" placeholder="mín. 6 caracteres" />
+            <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="border border-[#6d7f75] rounded-lg p-3 w-full" placeholder="mín. 6 caracteres" />
           </label>
           <button type="submit" disabled={loading} className="bg-[#174f3d] text-white rounded-lg py-3 font-semibold disabled:opacity-50">
             {loading ? "Criando..." : "Criar conta →"}

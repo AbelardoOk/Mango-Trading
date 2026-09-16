@@ -23,7 +23,7 @@ export default function RankingPage() {
         <div className="flex flex-col gap-4">
           <div>
             <h1 className="text-2xl font-bold">Ranking de jogadores</h1>
-            <p className="text-sm text-[#596b63]">Classificação pelo patrimônio total.</p>
+            <p className="text-sm text-[#4a5a52]">Classificação pelo patrimônio total.</p>
           </div>
           {me && (
             <div className="bg-[#172e27] text-white rounded-xl p-6 flex justify-between items-center">
@@ -36,7 +36,7 @@ export default function RankingPage() {
           )}
           <div className="bg-white rounded-xl border overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="text-xs text-[#596b63]">
+              <thead className="text-xs text-[#4a5a52]">
                 <tr><th className="p-4 text-left">POSIÇÃO</th><th className="p-4 text-left">JOGADOR</th><th className="p-4 text-left">PATRIMÔNIO TOTAL</th></tr>
               </thead>
               <tbody>

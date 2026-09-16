@@ -52,4 +52,14 @@ public class AdminMarketEventController {
         marketEventService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{id}/preview")
+    public ResponseEntity<List<java.time.LocalDateTime>> preview(@PathVariable Long id, @org.springframework.web.bind.annotation.RequestParam(defaultValue = "3") int count) {
+        return ResponseEntity.ok(marketEventService.previewNextRuns(id, count));
+    }
+
+    @PostMapping("/{id}/trigger")
+    public ResponseEntity<MarketEventResponse> trigger(@PathVariable Long id) {
+        return ResponseEntity.ok(marketEventService.trigger(id));
+    }
 }

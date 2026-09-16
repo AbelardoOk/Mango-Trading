@@ -33,6 +33,20 @@ export interface MarketEventRequest {
   impact: "LOW" | "MEDIUM" | "HIGH";
   startDate?: string; // ISO date-time
   endDate?: string;
+  recurrenceType?: "NONE" | "DAILY" | "RANDOM";
+  dailyTime?: string; // HH:mm
+  randomMinMinutes?: number;
+  randomMaxMinutes?: number;
+  randomMin?: string; // e.g. "30m" alternative
+  randomMax?: string;
+  durationMinutes?: number;
+  scope?: "ALL" | "SECTOR";
+  sector?: string;
+  priceDeltaPercent?: number;
+  direction?: "POSITIVE" | "NEGATIVE" | "RANDOM";
+  enabled?: boolean;
+  visibilityMinutes?: number;
+  daysOfWeek?: string;
 }
 
 export interface UserResponse {
@@ -74,6 +88,22 @@ export interface MarketEventResponse {
   startDate: string;
   endDate: string;
   createdAt: string;
+  recurrenceType?: "NONE" | "DAILY" | "RANDOM";
+  dailyTime?: string;
+  randomMinMinutes?: number;
+  randomMaxMinutes?: number;
+  durationMinutes?: number;
+  scope?: "ALL" | "SECTOR";
+  sector?: string;
+  priceDeltaPercent?: number;
+  direction?: "POSITIVE" | "NEGATIVE" | "RANDOM";
+  enabled?: boolean;
+  nextRunAt?: string;
+  lastRunAt?: string;
+  visibilityMinutes?: number;
+  daysOfWeek?: string;
+  status?: "SCHEDULED" | "UPCOMING" | "ACTIVE" | "ENDED";
+  secondsToStart?: number;
 }
 
 export interface TransactionResponse {

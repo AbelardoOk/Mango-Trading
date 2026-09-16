@@ -13,4 +13,10 @@ public interface MarketEventRepository extends JpaRepository<MarketEvent, Long> 
     List<MarketEvent> findByStartDateBetween(LocalDateTime start, LocalDateTime end);
 
     List<MarketEvent> findAllByOrderByCreatedAtDesc();
+
+    List<MarketEvent> findByEnabledTrueAndNextRunAtBefore(LocalDateTime now);
+
+    List<MarketEvent> findByEnabledTrueAndNextRunAtBetween(LocalDateTime from, LocalDateTime to);
+
+    List<MarketEvent> findByEnabledTrueAndNextRunAtIsNotNull();
 }

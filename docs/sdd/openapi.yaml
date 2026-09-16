@@ -54,6 +54,20 @@ components:
         impact: { type: string, enum: [LOW, MEDIUM, HIGH] }
         startDate: { type: string, format: date-time }
         endDate: { type: string, format: date-time }
+        recurrenceType: { type: string, enum: [NONE, DAILY, RANDOM], example: "RANDOM" }
+        dailyTime: { type: string, example: "09:00", description: "HH:mm for DAILY" }
+        randomMinMinutes: { type: integer, example: 30 }
+        randomMaxMinutes: { type: integer, example: 120 }
+        randomMin: { type: string, example: "30m", description: "alternative e.g. 30m, 2h" }
+        randomMax: { type: string, example: "2h" }
+        durationMinutes: { type: integer, example: 60 }
+        scope: { type: string, enum: [ALL, SECTOR], example: "ALL" }
+        sector: { type: string, example: "Tecnologia" }
+        priceDeltaPercent: { type: number, format: double, example: 3.5 }
+        direction: { type: string, enum: [POSITIVE, NEGATIVE, RANDOM], example: "RANDOM" }
+        enabled: { type: boolean, example: true }
+        visibilityMinutes: { type: integer, example: 3 }
+        daysOfWeek: { type: string, example: "MONDAY,TUESDAY" }
     UserResponse:
       type: object
       properties:
@@ -95,6 +109,22 @@ components:
         startDate: { type: string, format: date-time }
         endDate: { type: string, format: date-time }
         createdAt: { type: string, format: date-time }
+        recurrenceType: { type: string, enum: [NONE, DAILY, RANDOM] }
+        dailyTime: { type: string, example: "09:00" }
+        randomMinMinutes: { type: integer }
+        randomMaxMinutes: { type: integer }
+        durationMinutes: { type: integer }
+        scope: { type: string, enum: [ALL, SECTOR] }
+        sector: { type: string }
+        priceDeltaPercent: { type: number, format: double }
+        direction: { type: string, enum: [POSITIVE, NEGATIVE, RANDOM] }
+        enabled: { type: boolean }
+        nextRunAt: { type: string, format: date-time }
+        lastRunAt: { type: string, format: date-time }
+        visibilityMinutes: { type: integer }
+        daysOfWeek: { type: string }
+        status: { type: string, enum: [SCHEDULED, UPCOMING, ACTIVE, ENDED] }
+        secondsToStart: { type: integer }
     TransactionResponse:
       type: object
       properties:
@@ -235,7 +265,18 @@ paths:
         '401': { description: Unauthorized }
   /api/events:
     get:
-      summary: List market events
+      summary: List market events (UPCOMING/ACTIVE, 3min visibility)
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { type: array, items: { $ref: '#/components/schemas/MarketEventResponse' } }
+        '401': { description: Unauthorized }
+  /api/events/all:
+    get:
+      summary: List all market events (admin view)
       security: [{ bearerAuth: [] }]
       responses:
         '200':
@@ -432,6 +473,32 @@ paths:
       parameters: [{ name: id, in: path, required: true, schema: { type: integer, format: int64 } }]
       responses:
         '204': { description: No content }
+  /api/admin/events/{id}/preview:
+    get:
+      summary: Preview next runs
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: integer, format: int64 } }
+        - { name: count, in: query, required: false, schema: { type: integer, default: 3 } }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { type: array, items: { type: string, format: date-time } }
+        '404': { description: Not found }
+  /api/admin/events/{id}/trigger:
+    post:
+      summary: Trigger event now
+      security: [{ bearerAuth: [] }]
+      parameters: [{ name: id, in: path, required: true, schema: { type: integer, format: int64 } }]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/MarketEventResponse' }
+        '404': { description: Not found }
   /api/admin/users:
     get:
       security: [{ bearerAuth: [] }]

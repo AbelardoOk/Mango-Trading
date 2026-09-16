@@ -22,22 +22,22 @@ export default function HistoryPage() {
         <div className="flex flex-col gap-4">
           <div>
             <h1 className="text-2xl font-bold">Histórico de transações</h1>
-            <p className="text-sm text-[#596b63]">Consulte suas compras e vendas.</p>
+            <p className="text-sm text-[#4a5a52]">Consulte suas compras e vendas.</p>
           </div>
           <div className="flex gap-4 items-end">
             <label className="flex flex-col gap-1 text-sm">
               Tipo
-              <select value={filter} onChange={(e) => setFilter(e.target.value as never)} className="border border-[#9bada1] rounded-lg p-2">
+              <select value={filter} onChange={(e) => setFilter(e.target.value as never)} className="border border-[#6d7f75] rounded-lg p-2">
                 <option>Todas</option>
                 <option value="BUY">Compra</option>
                 <option value="SELL">Venda</option>
               </select>
             </label>
-            <span className="text-xs text-[#596b63]">{filtered.length} registros</span>
+            <span className="text-xs text-[#4a5a52]">{filtered.length} registros</span>
           </div>
           <div className="bg-white rounded-xl border overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="text-xs text-[#596b63]">
+              <thead className="text-xs text-[#4a5a52]">
                 <tr><th className="p-4 text-left">DATA E HORA</th><th className="p-4">OPERAÇÃO</th><th className="p-4">ATIVO</th><th className="p-4">QTD.</th><th className="p-4">PREÇO</th><th className="p-4">TOTAL</th></tr>
               </thead>
               <tbody>
@@ -53,7 +53,7 @@ export default function HistoryPage() {
                 ))}
               </tbody>
             </table>
-            {filtered.length === 0 && <p className="p-8 text-center text-sm text-[#596b63]">Nenhuma transação ainda.</p>}
+            {filtered.length === 0 && <p className="p-8 text-center text-sm text-[#4a5a52]">Nenhuma transação ainda.</p>}
           </div>
         </div>
       </Shell>
