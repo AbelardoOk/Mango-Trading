@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900"><rect width="1440" height="900" fill="#f5f7f3"/>
+<text x="60.00" y="59.85" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(23, 79, 61)" text-anchor="start" letter-spacing="1.5">MANGO TRADING / PLANEJAMENTO</text>
+<text x="60.00" y="120.34" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-1">Acessibilidade e regras de interação.</text>
+<rect x="60" y="151.796875" width="648" height="279.890625" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="85.00" y="200.29" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-0.5">Legibilidade e navegação</text>
+<text x="107.00" y="250.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Texto principal verde escuro sobre fundo claro; contraste planejado para WCAG AA.</text>
+<text x="107.00" y="280.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Botões com pelo menos 48 px de altura e foco visível.</text>
+<text x="107.00" y="310.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Rótulos persistentes nos campos; mensagens de erro textuais.</text>
+<text x="107.00" y="340.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Alta e baixa usam setas, sinais e texto, além de cor.</text>
+<text x="107.00" y="370.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Desktop com navegação lateral; celular com navegação inferior e lista de ações em</text>
+<text x="107.00" y="394.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">cartões.</text>
+<rect x="732" y="151.796875" width="648" height="279.890625" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="757.00" y="200.29" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-0.5">Planejamento da implementação</text>
+<text x="779.00" y="250.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">HTML semântico: header, nav, main, section, form e table.</text>
+<text x="779.00" y="280.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">ARIA: nomes acessíveis, aria-current, aria-describedby e regiões de status.</text>
+<text x="779.00" y="310.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Spring Security autentica e autoriza no servidor; esconder botões não substitui a</text>
+<text x="779.00" y="334.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">proteção de rotas.</text>
+<text x="779.00" y="364.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">JWT na arquitetura REST; senhas com hash; papel definido pelo servidor.</text>
+<text x="779.00" y="394.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Persistência real com PostgreSQL; operações de compra e venda atômicas no serviço.</text>
+<rect x="60" y="455.6875" width="1320" height="215.890625" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="85.00" y="504.18" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-0.5">Regras adotadas no protótipo</text>
+<text x="85.00" y="548.38" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Compra exige saldo suficiente e quantidade inteira positiva. Venda exige ações suficientes na carteira. O patrimônio soma saldo e posições a preço atual. Ações desativadas não aceitam novas</text>
+<text x="85.00" y="572.38" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">negociações.</text>
+<text x="85.00" y="616.38" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">Decisões propostas para validar com a equipe:</text>
+<text x="410.41" y="616.38" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start"> preservar transações ao desativar ações; impedir exclusão com vínculos; valores iniciais e limites de senha são exemplos, pois não estão</text>
+<text x="85.00" y="640.38" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">definidos na ERS.</text>
+<rect x="60" y="695.578125" width="1320" height="74" rx="17" fill="rgb(232, 241, 235)"/>
+<text x="85.00" y="738.38" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">Diferenciais planejados:</text>
+<text x="252.11" y="738.38" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start"> gráfico de patrimônio, filtros por setor, eventos de mercado e mensagens claras de resultado. O ranking já integra o MVP e não é tratado como funcionalidade extra.</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1323" viewBox="0 0 390 1323"><rect width="390" height="1323" fill="#f5f7f3"/>
+<text x="20.00" y="40.48" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="0.8">ÁREA DO JOGADOR</text>
+<text x="269.03" y="41.05" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Giovana · Jogadora</text>
+<text x="20.00" y="102.23" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-1">Mercado de ações</text>
+<text x="20.00" y="136.39" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Explore empresas fictícias e encontre seu próximo</text>
+<text x="20.00" y="156.39" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">movimento.</text>
+<text x="20.00" y="198.60" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Buscar empresa ou símbolo</text>
+<rect x="20" y="210.59375" width="350" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="20.5" y="211.09375" width="349" height="47" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="35.00" y="240.44" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start"></text>
+<text x="20.00" y="289.60" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Setor</text>
+<rect x="20" y="301.59375" width="300" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="20.5" y="302.09375" width="299" height="47" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="35.00" y="331.44" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Todos os setores</text>
+<text x="300.00" y="331.44" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">⌄</text>
+<rect x="20" y="372.59375" width="350" height="184.1875" rx="17" fill="rgb(255, 255, 255)"/>
+<rect x="40" y="394.6875" width="39" height="39" rx="11" fill="rgb(232, 241, 235)"/>
+<text x="51.03" y="418.83" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="750" fill="rgb(23, 79, 61)" text-anchor="start">AU</text>
+<text x="91.00" y="409.18" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">Aurora Energia</text>
+<text x="91.00" y="430.23" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">AURA3 · Energia</text>
+<text x="40.00" y="468.37" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">M$ 42,00</text>
+<text x="284.67" y="468.37" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="400" fill="rgb(23, 79, 61)" text-anchor="start">↑ +2,44%</text>
+<rect x="40" y="488.78125" width="310" height="48" rx="10" fill="rgb(232, 241, 235)"/>
+<text x="157.19" y="518.29" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Negociar →</text>
+<rect x="20" y="570.78125" width="350" height="184.1875" rx="17" fill="rgb(255, 255, 255)"/>
+<rect x="40" y="592.875" width="39" height="39" rx="11" fill="rgb(232, 241, 235)"/>
+<text x="51.56" y="617.01" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="750" fill="rgb(23, 79, 61)" text-anchor="start">NE</text>
+<text x="91.00" y="607.37" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">Nexo Tecnologia</text>
+<text x="91.00" y="628.42" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">NEXO3 · Tecnologia</text>
+<text x="40.00" y="666.56" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">M$ 65,00</text>
+<text x="284.67" y="666.56" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="400" fill="rgb(23, 79, 61)" text-anchor="start">↑ +1,56%</text>
+<rect x="40" y="686.96875" width="310" height="48" rx="10" fill="rgb(232, 241, 235)"/>
+<text x="157.19" y="716.48" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Negociar →</text>
+<rect x="20" y="768.96875" width="350" height="184.1875" rx="17" fill="rgb(255, 255, 255)"/>
+<rect x="40" y="791.0625" width="39" height="39" rx="11" fill="rgb(232, 241, 235)"/>
+<text x="52.30" y="815.20" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="750" fill="rgb(23, 79, 61)" text-anchor="start">VE</text>
+<text x="91.00" y="805.56" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">Verde Agro</text>
+<text x="91.00" y="826.61" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">VERD3 · Agronegócio</text>
+<text x="40.00" y="864.75" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">M$ 31,50</text>
+<text x="284.67" y="864.75" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="400" fill="rgb(173, 52, 44)" text-anchor="start">↓ −0,98%</text>
+<rect x="40" y="885.15625" width="310" height="48" rx="10" fill="rgb(232, 241, 235)"/>
+<text x="157.19" y="914.67" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Negociar →</text>
+<rect x="20" y="967.15625" width="350" height="184.1875" rx="17" fill="rgb(255, 255, 255)"/>
+<rect x="40" y="989.25" width="39" height="39" rx="11" fill="rgb(232, 241, 235)"/>
+<text x="51.73" y="1013.39" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="750" fill="rgb(23, 79, 61)" text-anchor="start">BR</text>
+<text x="91.00" y="1003.75" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">Brisa Logística</text>
+<text x="91.00" y="1024.80" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">BRIS3 · Logística</text>
+<text x="40.00" y="1062.93" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">M$ 24,80</text>
+<text x="284.67" y="1062.93" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="400" fill="rgb(23, 79, 61)" text-anchor="start">↑ +0,81%</text>
+<rect x="40" y="1083.34375" width="310" height="48" rx="10" fill="rgb(232, 241, 235)"/>
+<text x="157.19" y="1112.85" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Negociar →</text>
+<text x="20.00" y="1187.98" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Todas as empresas e cotações são fictícias. As operações usam</text>
+<text x="20.00" y="1207.17" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">somente saldo virtual.</text>
+<rect x="0" y="1247" width="390" height="76" rx="0" fill="rgb(255, 255, 255)"/>
+<path d="M0,1247H390" stroke="rgb(212, 223, 215)" stroke-width="1"/>
+<rect x="14.0625" y="1261.5" width="46.984375" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<text x="22.06" y="1290.14" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(89, 107, 99)" text-anchor="start">Início</text>
+<rect x="76.1875" y="1261.5" width="65.6875" height="48" rx="9" fill="rgb(232, 241, 235)"/>
+<text x="84.19" y="1290.14" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Mercado</text>
+<rect x="157.015625" y="1261.5" width="59.109375" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<text x="165.02" y="1290.14" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(89, 107, 99)" text-anchor="start">carteira</text>
+<rect x="231.25" y="1261.5" width="67.171875" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<text x="239.25" y="1290.14" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(89, 107, 99)" text-anchor="start">Histórico</text>
+<rect x="313.5625" y="1261.5" width="62.359375" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<text x="321.56" y="1290.14" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(89, 107, 99)" text-anchor="start">Ranking</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900"><rect width="1440" height="900" fill="#f5f7f3"/>
+<rect x="0" y="0" width="232" height="900" rx="0" fill="rgb(23, 46, 39)"/>
+<text x="24.00" y="61.92" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="750" fill="rgb(245, 172, 69)" text-anchor="start" letter-spacing="-1.3">mango.</text>
+<text x="24.00" y="94.48" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="700" fill="rgb(190, 207, 197)" text-anchor="start" letter-spacing="1.5">TRADING SIMULATOR</text>
+<rect x="24" y="119" width="184" height="48" rx="10" fill="rgb(23, 79, 61)"/>
+<text x="42.00" y="148.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(255, 255, 255)" text-anchor="start">Ações e empresas</text>
+<text x="42.00" y="204.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Eventos de mercado</text>
+<text x="42.00" y="260.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Usuários</text>
+<text x="24.00" y="700.04" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">100% VIRTUAL</text>
+<text x="24.00" y="720.84" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">Empresas fictícias.</text>
+<text x="24.00" y="741.63" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">Aprendizado real.</text>
+<text x="24.00" y="794.93" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(220, 232, 223)" text-anchor="start">← Área do jogador</text>
+<text x="24.00" y="858.93" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(220, 232, 223)" text-anchor="start">Sair da conta</text>
+<text x="272.00" y="57.35" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="1.5">ADMINISTRAÇÃO / ACESSO RESTRITO</text>
+<rect x="1304.546875" y="38.59375" width="95.453125" height="28" rx="6" fill="rgb(255, 240, 214)"/>
+<text x="1314.55" y="57.23" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(117, 70, 0)" text-anchor="start">Administrador</text>
+<text x="272.00" y="127.34" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-1">Editar ação</text>
+<text x="272.00" y="162.60" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Ações e empresas / Editar AURA3</text>
+<rect x="272" y="192.796875" width="1128" height="600" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="297.00" y="232.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Nome da empresa</text>
+<rect x="297" y="244.796875" width="552.09375" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="297.5" y="245.296875" width="551.09375" height="47" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="312.00" y="274.65" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Aurora Energia</text>
+<text x="873.09" y="232.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Símbolo da ação</text>
+<rect x="873.09375" y="244.796875" width="501.90625" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="873.59375" y="245.296875" width="500.90625" height="47" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="888.09" y="274.65" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">AURA3</text>
+<text x="873.09" y="313.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Identificador único, por exemplo: SOLR3.</text>
+<text x="297.00" y="355.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Setor</text>
+<rect x="297" y="367.796875" width="552.09375" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="297.5" y="368.296875" width="551.09375" height="47" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="312.00" y="397.65" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Energia</text>
+<text x="873.09" y="355.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Preço atual (M$)</text>
+<rect x="873.09375" y="367.796875" width="501.90625" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="873.59375" y="368.296875" width="500.90625" height="47" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="888.09" y="397.65" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">42</text>
+<text x="873.09" y="436.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Valor positivo, com até duas casas decimais.</text>
+<text x="297.00" y="478.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Volatilidade (%)</text>
+<rect x="297" y="490.796875" width="552.09375" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="297.5" y="491.296875" width="551.09375" height="47" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="312.00" y="520.65" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">1.8</text>
+<text x="297.00" y="559.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Parâmetro de oscilação do mercado simulado.</text>
+<text x="873.09" y="478.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Situação</text>
+<rect x="873.09375" y="490.796875" width="501.90625" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="873.59375" y="491.296875" width="500.90625" height="47" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="888.09" y="520.65" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Ativa</text>
+<text x="1355.00" y="520.65" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">⌄</text>
+<text x="297.00" y="597.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Descrição</text>
+<rect x="297" y="609.796875" width="1078" height="90" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="297.5" y="610.296875" width="1077" height="89" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="312.00" y="636.05" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Empresa fictícia dedicada à geração de energia renovável e à distribuição de soluções sustentáveis.</text>
+<rect x="297" y="719.796875" width="156.296875" height="48" rx="10" fill="rgb(23, 79, 61)"/>
+<text x="320.00" y="749.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="650" fill="rgb(255, 255, 255)" text-anchor="start">Salvar alterações</text>
+<rect x="469.296875" y="719.796875" width="102.125" height="48" rx="10" fill="rgb(232, 241, 235)"/>
+<text x="492.30" y="749.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Cancelar</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900"><rect width="1440" height="900" fill="#f5f7f3"/>
+<rect x="0" y="0" width="232" height="900" rx="0" fill="rgb(23, 46, 39)"/>
+<text x="24.00" y="61.92" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="750" fill="rgb(245, 172, 69)" text-anchor="start" letter-spacing="-1.3">mango.</text>
+<text x="24.00" y="94.48" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="700" fill="rgb(190, 207, 197)" text-anchor="start" letter-spacing="1.5">TRADING SIMULATOR</text>
+<rect x="24" y="119" width="184" height="48" rx="10" fill="rgb(23, 79, 61)"/>
+<text x="42.00" y="148.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(255, 255, 255)" text-anchor="start">Visão geral</text>
+<text x="42.00" y="204.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Mercado</text>
+<text x="42.00" y="260.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Minha carteira</text>
+<text x="42.00" y="316.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Histórico</text>
+<text x="42.00" y="372.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Ranking</text>
+<text x="24.00" y="700.04" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">100% VIRTUAL</text>
+<text x="24.00" y="720.84" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">Empresas fictícias.</text>
+<text x="24.00" y="741.63" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">Aprendizado real.</text>
+<text x="24.00" y="794.93" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(220, 232, 223)" text-anchor="start">Guia do protótipo</text>
+<text x="24.00" y="858.93" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(220, 232, 223)" text-anchor="start">Sair da conta</text>
+<text x="272.00" y="57.35" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="1.5">ÁREA DO JOGADOR</text>
+<text x="1290.63" y="57.02" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Giovana · Jogadora</text>
+<text x="272.00" y="127.34" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-1">Seu próximo movimento começa aqui.</text>
+<text x="272.00" y="162.60" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Acompanhe seu patrimônio e explore o mercado fictício.</text>
+<rect x="272" y="192.796875" width="360" height="139.796875" rx="17" fill="rgb(23, 46, 39)"/>
+<text x="297.00" y="231.23" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(199, 215, 204)" text-anchor="start">Patrimônio total</text>
+<text x="297.00" y="271.82" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="700" fill="rgb(255, 255, 255)" text-anchor="start" letter-spacing="-1">M$ 12.480,00</text>
+<text x="297.00" y="301.23" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(245, 172, 69)" text-anchor="start">+24,80% desde o início</text>
+<rect x="656" y="192.796875" width="360" height="139.796875" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="681.00" y="231.23" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Saldo disponível</text>
+<text x="681.00" y="271.82" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-1">M$ 4.200,00</text>
+<text x="681.00" y="301.23" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Pronto para novas operações</text>
+<rect x="1040" y="192.796875" width="360" height="139.796875" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="1065.00" y="231.23" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Valor das ações</text>
+<text x="1065.00" y="271.82" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-1">M$ 8.280,00</text>
+<text x="1065.00" y="301.23" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">3 empresas na sua carteira</text>
+<rect x="272" y="358.59375" width="729.75" height="334.796875" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="297.00" y="400.97" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">Evolução do patrimônio</text>
+<text x="297.00" y="440.02" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Últimos 7 dias · Valores em moeda virtual (M$)</text>
+<svg viewBox="0 0 680 168" preserveAspectRatio="none" role="img" aria-label="Evolução ilustrativa do patrimônio, de 10 mil a 12.480 moedas virtuais em sete dias" x="297" y="466.390625" width="679.75" height="168"><path d="M0 25H680M0 78H680M0 133H680" stroke="#e4eae5" fill="none"></path><path d="M0 145 L80 119 L150 128 L210 94 L280 104 L350 71 L420 80 L480 42 L550 57 L620 22 L680 8 L680 165 L0 165Z" fill="#e8f1eb"></path><path d="M0 145 L80 119 L150 128 L210 94 L280 104 L350 71 L420 80 L480 42 L550 57 L620 22 L680 8" fill="none" stroke="#174f3d" stroke-width="4" stroke-linejoin="round"></path></svg>
+<text x="297.00" y="665.45" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">08 set</text>
+<text x="427.67" y="665.45" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">09 set</text>
+<text x="558.34" y="665.45" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">10 set</text>
+<text x="689.02" y="665.45" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">11 set</text>
+<text x="819.69" y="665.45" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">12 set</text>
+<text x="950.36" y="665.45" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">14 set</text>
+<rect x="1025.75" y="358.59375" width="374.234375" height="334.796875" rx="17" fill="rgb(232, 241, 235)"/>
+<text x="1050.75" y="395.44" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(23, 79, 61)" text-anchor="start" letter-spacing="1.5">SEU LUGAR NO JOGO</text>
+<text x="1050.75" y="456.67" font-family="Segoe UI, Arial, sans-serif" font-size="39" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-1">4º lugar</text>
+<text x="1050.75" y="499.82" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Você está entre os 10 melhores.</text>
+<text x="1050.75" y="520.62" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Explore as estratégias dos jogadores.</text>
+<rect x="1050.75" y="546.984375" width="324.234375" height="48" rx="10" fill="rgb(23, 79, 61)"/>
+<text x="1166.91" y="576.49" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="650" fill="rgb(255, 255, 255)" text-anchor="start">Ver ranking →</text>
+<rect x="272" y="719.390625" width="1128" height="99.796875" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="297.00" y="761.77" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">O mercado está em movimento.</text>
+<text x="297.00" y="787.82" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Descubra empresas e encontre sua próxima ação.</text>
+<rect x="1196.71875" y="745.28125" width="178.28125" height="48" rx="10" fill="rgb(23, 79, 61)"/>
+<text x="1219.72" y="774.79" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="650" fill="rgb(255, 255, 255)" text-anchor="start">Explorar mercado →</text>
+</svg>

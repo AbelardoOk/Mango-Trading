@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900"><rect width="1440" height="900" fill="#f5f7f3"/>
+<rect x="0" y="0" width="232" height="900" rx="0" fill="rgb(23, 46, 39)"/>
+<text x="24.00" y="61.92" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="750" fill="rgb(245, 172, 69)" text-anchor="start" letter-spacing="-1.3">mango.</text>
+<text x="24.00" y="94.48" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="700" fill="rgb(190, 207, 197)" text-anchor="start" letter-spacing="1.5">TRADING SIMULATOR</text>
+<text x="42.00" y="148.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Visão geral</text>
+<text x="42.00" y="204.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Mercado</text>
+<rect x="24" y="231" width="184" height="48" rx="10" fill="rgb(23, 79, 61)"/>
+<text x="42.00" y="260.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(255, 255, 255)" text-anchor="start">Minha carteira</text>
+<text x="42.00" y="316.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Histórico</text>
+<text x="42.00" y="372.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Ranking</text>
+<text x="24.00" y="700.04" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">100% VIRTUAL</text>
+<text x="24.00" y="720.84" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">Empresas fictícias.</text>
+<text x="24.00" y="741.63" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">Aprendizado real.</text>
+<text x="24.00" y="794.93" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(220, 232, 223)" text-anchor="start">Guia do protótipo</text>
+<text x="24.00" y="858.93" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(220, 232, 223)" text-anchor="start">Sair da conta</text>
+<text x="272.00" y="57.35" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="1.5">ÁREA DO JOGADOR</text>
+<text x="1290.63" y="57.02" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Giovana · Jogadora</text>
+<text x="272.00" y="127.34" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-1">Minha carteira</text>
+<text x="272.00" y="162.60" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Acompanhe suas posições e a evolução do seu patrimônio.</text>
+<rect x="272" y="192.796875" width="360" height="138" rx="17" fill="rgb(23, 46, 39)"/>
+<text x="297.00" y="231.23" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(199, 215, 204)" text-anchor="start">Patrimônio total</text>
+<text x="297.00" y="271.82" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="700" fill="rgb(255, 255, 255)" text-anchor="start" letter-spacing="-1">M$ 12.480,00</text>
+<rect x="656" y="192.796875" width="360" height="138" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="681.00" y="231.23" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Saldo disponível</text>
+<text x="681.00" y="271.82" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-1">M$ 3.780,00</text>
+<rect x="1040" y="192.796875" width="360" height="138" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="1065.00" y="231.23" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Valor das ações</text>
+<text x="1065.00" y="271.82" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-1">M$ 8.700,00</text>
+<rect x="272" y="356.796875" width="1128" height="319" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="297.00" y="393.65" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(89, 107, 99)" text-anchor="start" letter-spacing="0.6">ATIVO</text>
+<text x="491.64" y="393.65" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(89, 107, 99)" text-anchor="start" letter-spacing="0.6">QTD.</text>
+<text x="574.92" y="393.65" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(89, 107, 99)" text-anchor="start" letter-spacing="0.6">PREÇO MÉDIO</text>
+<text x="756.42" y="393.65" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(89, 107, 99)" text-anchor="start" letter-spacing="0.6">ATUAL</text>
+<text x="894.66" y="393.65" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(89, 107, 99)" text-anchor="start" letter-spacing="0.6">VALOR ATUAL</text>
+<text x="1077.08" y="393.65" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(89, 107, 99)" text-anchor="start" letter-spacing="0.6">RESULTADO</text>
+<path d="M297,414.296875H491.640625" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="297.00" y="449.21" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">AURA3</text>
+<text x="297.00" y="467.84" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Aurora Energia</text>
+<path d="M491.640625,414.296875H574.921875" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="491.64" y="459.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">90</text>
+<path d="M574.921875,414.296875H756.421875" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="574.92" y="459.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">M$ 40,22</text>
+<path d="M756.421875,414.296875H894.65625" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="756.42" y="459.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">M$ 42,00</text>
+<path d="M894.65625,414.296875H1077.078125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="894.66" y="459.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">M$ 3.780,00</text>
+<path d="M1077.078125,414.296875H1246.8125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="1077.08" y="459.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 79, 61)" text-anchor="start">+M$ 160,00</text>
+<path d="M1246.8125,414.296875H1375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="1246.8125" y="433.796875" width="69.6875" height="40" rx="8" fill="rgb(232, 241, 235)"/>
+<text x="1261.81" y="458.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Vender</text>
+<path d="M297,493.296875H491.640625" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="297.00" y="528.21" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">NEXO3</text>
+<text x="297.00" y="546.84" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Nexo Tecnologia</text>
+<path d="M491.640625,493.296875H574.921875" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="491.64" y="538.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">66</text>
+<path d="M574.921875,493.296875H756.421875" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="574.92" y="538.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">M$ 61,00</text>
+<path d="M756.421875,493.296875H894.65625" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="756.42" y="538.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">M$ 65,00</text>
+<path d="M894.65625,493.296875H1077.078125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="894.66" y="538.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">M$ 4.290,00</text>
+<path d="M1077.078125,493.296875H1246.8125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="1077.08" y="538.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 79, 61)" text-anchor="start">+M$ 264,00</text>
+<path d="M1246.8125,493.296875H1375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="1246.8125" y="512.796875" width="69.6875" height="40" rx="8" fill="rgb(232, 241, 235)"/>
+<text x="1261.81" y="537.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Vender</text>
+<path d="M297,572.296875H491.640625" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="297.00" y="607.21" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">VERD3</text>
+<text x="297.00" y="625.84" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Verde Agro</text>
+<path d="M491.640625,572.296875H574.921875" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="491.64" y="617.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">20</text>
+<path d="M574.921875,572.296875H756.421875" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="574.92" y="617.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">M$ 32,00</text>
+<path d="M756.421875,572.296875H894.65625" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="756.42" y="617.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">M$ 31,50</text>
+<path d="M894.65625,572.296875H1077.078125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="894.66" y="617.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">M$ 630,00</text>
+<path d="M1077.078125,572.296875H1246.8125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="1077.08" y="617.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(173, 52, 44)" text-anchor="start">−M$ 10,00</text>
+<path d="M1246.8125,572.296875H1375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="1246.8125" y="591.796875" width="69.6875" height="40" rx="8" fill="rgb(232, 241, 235)"/>
+<text x="1261.81" y="616.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Vender</text>
+<text x="272.00" y="716.23" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Patrimônio total = saldo disponível + valor atual de todas as ações.</text>
+<text x="272.00" y="737.02" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Resultado por ativo = (preço atual − preço médio) × quantidade.</text>
+</svg>

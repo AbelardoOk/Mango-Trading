@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900"><rect width="1440" height="900" fill="#f5f7f3"/>
+<rect x="0" y="0" width="232" height="900" rx="0" fill="rgb(23, 46, 39)"/>
+<text x="24.00" y="61.92" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="750" fill="rgb(245, 172, 69)" text-anchor="start" letter-spacing="-1.3">mango.</text>
+<text x="24.00" y="94.48" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="700" fill="rgb(190, 207, 197)" text-anchor="start" letter-spacing="1.5">TRADING SIMULATOR</text>
+<text x="42.00" y="148.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Ações e empresas</text>
+<rect x="24" y="175" width="184" height="48" rx="10" fill="rgb(23, 79, 61)"/>
+<text x="42.00" y="204.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(255, 255, 255)" text-anchor="start">Eventos de mercado</text>
+<text x="42.00" y="260.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Usuários</text>
+<text x="24.00" y="700.04" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">100% VIRTUAL</text>
+<text x="24.00" y="720.84" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">Empresas fictícias.</text>
+<text x="24.00" y="741.63" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">Aprendizado real.</text>
+<text x="24.00" y="794.93" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(220, 232, 223)" text-anchor="start">← Área do jogador</text>
+<text x="24.00" y="858.93" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(220, 232, 223)" text-anchor="start">Sair da conta</text>
+<text x="272.00" y="57.35" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="1.5">ADMINISTRAÇÃO / ACESSO RESTRITO</text>
+<rect x="1304.546875" y="38.59375" width="95.453125" height="28" rx="6" fill="rgb(255, 240, 214)"/>
+<text x="1314.55" y="57.23" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(117, 70, 0)" text-anchor="start">Administrador</text>
+<text x="272.00" y="127.34" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-1">Configurar evento</text>
+<text x="272.00" y="162.60" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Eventos de mercado / Novo evento ou edição</text>
+<rect x="272" y="192.796875" width="1128" height="564.796875" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="297.00" y="232.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Título do evento</text>
+<rect x="297" y="244.796875" width="1078" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="297.5" y="245.296875" width="1077" height="47" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="312.00" y="274.65" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Avanço em energia renovável</text>
+<text x="297.00" y="327.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Descrição</text>
+<rect x="297" y="339.796875" width="1078" height="90" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="297.5" y="340.296875" width="1077" height="89" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="312.00" y="366.05" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Inovação fictícia impulsiona o setor de energia.</text>
+<text x="297.00" y="464.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Impacto (%)</text>
+<rect x="297" y="476.796875" width="552.09375" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="297.5" y="477.296875" width="551.09375" height="47" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="312.00" y="506.65" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">2</text>
+<text x="873.09" y="464.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Setor afetado</text>
+<rect x="873.09375" y="476.796875" width="501.90625" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="873.59375" y="477.296875" width="500.90625" height="47" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="888.09" y="506.65" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Energia</text>
+<text x="297.00" y="563.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Data de início</text>
+<rect x="297" y="575.796875" width="552.09375" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="297.5" y="576.296875" width="551.09375" height="47" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="312.00" y="605.65" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">2026-09-14</text>
+<text x="873.09" y="563.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(23, 46, 39)" text-anchor="start">Data de término</text>
+<rect x="873.09375" y="575.796875" width="501.90625" height="48" rx="9" fill="rgb(255, 255, 255)"/>
+<rect x="873.59375" y="576.296875" width="500.90625" height="47" rx="9" fill="none" stroke="rgb(155, 173, 161)" stroke-width="1"/>
+<text x="888.09" y="605.65" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">2026-09-18</text>
+<rect x="297" y="643.796875" width="134.734375" height="48" rx="10" fill="rgb(23, 79, 61)"/>
+<text x="320.00" y="673.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="650" fill="rgb(255, 255, 255)" text-anchor="start">Salvar evento</text>
+<rect x="447.734375" y="643.796875" width="102.125" height="48" rx="10" fill="rgb(232, 241, 235)"/>
+<text x="470.73" y="673.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Cancelar</text>
+<text x="297.00" y="726.23" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Diferencial planejado. O impacto nos preços será implementado no motor de simulação.</text>
+</svg>

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900"><rect width="1440" height="900" fill="#f5f7f3"/>
+<rect x="0" y="0" width="232" height="900" rx="0" fill="rgb(23, 46, 39)"/>
+<text x="24.00" y="61.92" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="750" fill="rgb(245, 172, 69)" text-anchor="start" letter-spacing="-1.3">mango.</text>
+<text x="24.00" y="94.48" font-family="Segoe UI, Arial, sans-serif" font-size="9" font-weight="700" fill="rgb(190, 207, 197)" text-anchor="start" letter-spacing="1.5">TRADING SIMULATOR</text>
+<rect x="24" y="119" width="184" height="48" rx="10" fill="rgb(23, 79, 61)"/>
+<text x="42.00" y="148.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(255, 255, 255)" text-anchor="start">Ações e empresas</text>
+<text x="42.00" y="204.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Eventos de mercado</text>
+<text x="42.00" y="260.51" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="rgb(220, 232, 223)" text-anchor="start">Usuários</text>
+<text x="24.00" y="700.04" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">100% VIRTUAL</text>
+<text x="24.00" y="720.84" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">Empresas fictícias.</text>
+<text x="24.00" y="741.63" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(190, 207, 197)" text-anchor="start">Aprendizado real.</text>
+<text x="24.00" y="794.93" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(220, 232, 223)" text-anchor="start">← Área do jogador</text>
+<text x="24.00" y="858.93" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(220, 232, 223)" text-anchor="start">Sair da conta</text>
+<text x="272.00" y="57.35" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="1.5">ADMINISTRAÇÃO / ACESSO RESTRITO</text>
+<rect x="1304.546875" y="38.59375" width="95.453125" height="28" rx="6" fill="rgb(255, 240, 214)"/>
+<text x="1314.55" y="57.23" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(117, 70, 0)" text-anchor="start">Administrador</text>
+<text x="272.00" y="127.34" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-1">Ações e empresas</text>
+<text x="272.00" y="162.60" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">Gerencie o catálogo de empresas e ações fictícias.</text>
+<rect x="272" y="202.796875" width="63.28125" height="28" rx="14" fill="rgb(232, 241, 235)"/>
+<text x="283.00" y="221.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="rgb(23, 79, 61)" text-anchor="start">4 ativas</text>
+<rect x="351.28125" y="202.796875" width="95.296875" height="28" rx="14" fill="rgb(255, 240, 214)"/>
+<text x="362.28" y="221.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="rgb(123, 74, 0)" text-anchor="start">0 desativadas</text>
+<rect x="1243.265625" y="192.796875" width="156.734375" height="48" rx="10" fill="rgb(23, 79, 61)"/>
+<text x="1266.27" y="222.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="650" fill="rgb(255, 255, 255)" text-anchor="start">+ Cadastrar ação</text>
+<rect x="272" y="266.796875" width="1128" height="398" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="297.00" y="303.65" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(89, 107, 99)" text-anchor="start" letter-spacing="0.6">EMPRESA / SÍMBOLO</text>
+<text x="652.98" y="303.65" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(89, 107, 99)" text-anchor="start" letter-spacing="0.6">PREÇO</text>
+<text x="799.70" y="303.65" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(89, 107, 99)" text-anchor="start" letter-spacing="0.6">STATUS</text>
+<text x="931.42" y="303.65" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(89, 107, 99)" text-anchor="start" letter-spacing="0.6">AÇÕES</text>
+<path d="M297,324.296875H652.984375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="297" y="344.296875" width="39" height="39" rx="11" fill="rgb(232, 241, 235)"/>
+<text x="308.03" y="368.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="750" fill="rgb(23, 79, 61)" text-anchor="start">AU</text>
+<text x="348.00" y="359.21" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">Aurora Energia</text>
+<text x="348.00" y="377.84" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">AURA3 · Energia</text>
+<path d="M652.984375,324.296875H799.703125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="652.98" y="369.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">M$ 42,00</text>
+<path d="M799.703125,324.296875H931.421875" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="799.703125" y="349.796875" width="49.5" height="28" rx="14" fill="rgb(232, 241, 235)"/>
+<text x="810.70" y="368.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="rgb(23, 79, 61)" text-anchor="start">Ativa</text>
+<path d="M931.421875,324.296875H1375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="931.421875" y="343.796875" width="63.140625" height="40" rx="8" fill="rgb(232, 241, 235)"/>
+<text x="946.42" y="368.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Editar</text>
+<text x="1016.56" y="368.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Desativar</text>
+<text x="1106.28" y="368.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Excluir</text>
+<path d="M297,403.296875H652.984375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="297" y="423.296875" width="39" height="39" rx="11" fill="rgb(232, 241, 235)"/>
+<text x="308.56" y="447.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="750" fill="rgb(23, 79, 61)" text-anchor="start">NE</text>
+<text x="348.00" y="438.21" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">Nexo Tecnologia</text>
+<text x="348.00" y="456.84" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">NEXO3 · Tecnologia</text>
+<path d="M652.984375,403.296875H799.703125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="652.98" y="448.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">M$ 65,00</text>
+<path d="M799.703125,403.296875H931.421875" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="799.703125" y="428.796875" width="49.5" height="28" rx="14" fill="rgb(232, 241, 235)"/>
+<text x="810.70" y="447.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="rgb(23, 79, 61)" text-anchor="start">Ativa</text>
+<path d="M931.421875,403.296875H1375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="931.421875" y="422.796875" width="63.140625" height="40" rx="8" fill="rgb(232, 241, 235)"/>
+<text x="946.42" y="447.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Editar</text>
+<text x="1016.56" y="447.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Desativar</text>
+<text x="1106.28" y="447.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Excluir</text>
+<path d="M297,482.296875H652.984375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="297" y="502.296875" width="39" height="39" rx="11" fill="rgb(232, 241, 235)"/>
+<text x="309.30" y="526.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="750" fill="rgb(23, 79, 61)" text-anchor="start">VE</text>
+<text x="348.00" y="517.21" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">Verde Agro</text>
+<text x="348.00" y="535.84" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">VERD3 · Agronegócio</text>
+<path d="M652.984375,482.296875H799.703125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="652.98" y="527.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">M$ 31,50</text>
+<path d="M799.703125,482.296875H931.421875" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="799.703125" y="507.796875" width="49.5" height="28" rx="14" fill="rgb(232, 241, 235)"/>
+<text x="810.70" y="526.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="rgb(23, 79, 61)" text-anchor="start">Ativa</text>
+<path d="M931.421875,482.296875H1375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="931.421875" y="501.796875" width="63.140625" height="40" rx="8" fill="rgb(232, 241, 235)"/>
+<text x="946.42" y="526.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Editar</text>
+<text x="1016.56" y="526.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Desativar</text>
+<text x="1106.28" y="526.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Excluir</text>
+<path d="M297,561.296875H652.984375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="297" y="581.296875" width="39" height="39" rx="11" fill="rgb(232, 241, 235)"/>
+<text x="308.73" y="605.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="750" fill="rgb(23, 79, 61)" text-anchor="start">BR</text>
+<text x="348.00" y="596.21" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">Brisa Logística</text>
+<text x="348.00" y="614.84" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="400" fill="rgb(89, 107, 99)" text-anchor="start">BRIS3 · Logística</text>
+<path d="M652.984375,561.296875H799.703125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="652.98" y="606.31" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">M$ 24,80</text>
+<path d="M799.703125,561.296875H931.421875" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="799.703125" y="586.796875" width="49.5" height="28" rx="14" fill="rgb(232, 241, 235)"/>
+<text x="810.70" y="605.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="rgb(23, 79, 61)" text-anchor="start">Ativa</text>
+<path d="M931.421875,561.296875H1375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<rect x="931.421875" y="580.796875" width="63.140625" height="40" rx="8" fill="rgb(232, 241, 235)"/>
+<text x="946.42" y="605.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Editar</text>
+<text x="1016.56" y="605.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Desativar</text>
+<text x="1106.28" y="605.44" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="650" fill="rgb(23, 79, 61)" text-anchor="start">Excluir</text>
+<rect x="272" y="690.796875" width="1128" height="91.59375" rx="17" fill="rgb(232, 241, 235)"/>
+<text x="297.00" y="730.23" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start">Controle do catálogo</text>
+<text x="297.00" y="751.02" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Ações desativadas ficam indisponíveis para novas negociações. Cadastro, edição e exclusão são exclusivos do administrador.</text>
+</svg>

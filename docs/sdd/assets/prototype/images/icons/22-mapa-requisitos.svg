@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="942" viewBox="0 0 1440 942"><rect width="1440" height="942" fill="#f5f7f3"/>
+<text x="60.00" y="59.85" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(23, 79, 61)" text-anchor="start" letter-spacing="1.5">MANGO TRADING / RASTREABILIDADE</text>
+<text x="60.00" y="120.34" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-1">Requisitos representados nas telas.</text>
+<rect x="60" y="151.796875" width="1320" height="546" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="85.00" y="188.65" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(89, 107, 99)" text-anchor="start" letter-spacing="0.6">REQUISITO</text>
+<text x="309.20" y="188.65" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(89, 107, 99)" text-anchor="start" letter-spacing="0.6">TELA / FLUXO</text>
+<text x="831.86" y="188.65" font-family="Segoe UI, Arial, sans-serif" font-size="11" font-weight="700" fill="rgb(89, 107, 99)" text-anchor="start" letter-spacing="0.6">EVIDÊNCIA VISUAL</text>
+<path d="M85,209.296875H309.203125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="85.00" y="243.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">RF01–RF02</text>
+<path d="M309.203125,209.296875H831.859375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="309.20" y="243.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Cadastro e login</text>
+<path d="M831.859375,209.296875H1355" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="831.86" y="243.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Campos, rótulos, validação e navegação</text>
+<path d="M85,267.296875H309.203125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="85.00" y="301.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">RF03</text>
+<path d="M309.203125,267.296875H831.859375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="309.20" y="301.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Perfis do jogador e administrador</text>
+<path d="M831.859375,267.296875H1355" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="831.86" y="301.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Menus e responsabilidades separados</text>
+<path d="M85,325.296875H309.203125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="85.00" y="359.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">RF04</text>
+<path d="M309.203125,325.296875H831.859375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="309.20" y="359.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Listagem, cadastro, edição e exclusão</text>
+<path d="M831.859375,325.296875H1355" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="831.86" y="359.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">CRUD completo + ativar/desativar</text>
+<path d="M85,383.296875H309.203125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="85.00" y="417.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">RF05</text>
+<path d="M309.203125,383.296875H831.859375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="309.20" y="417.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Mercado de ações</text>
+<path d="M831.859375,383.296875H1355" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="831.86" y="417.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Empresa, símbolo, preço e setor</text>
+<path d="M85,441.296875H309.203125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="85.00" y="475.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">RF06–RF08</text>
+<path d="M309.203125,441.296875H831.859375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="309.20" y="475.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Compra, venda e confirmação</text>
+<path d="M831.859375,441.296875H1355" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="831.86" y="475.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Quantidade, total e atualização do saldo</text>
+<path d="M85,499.296875H309.203125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="85.00" y="533.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">RF09–RF11</text>
+<path d="M309.203125,499.296875H831.859375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="309.20" y="533.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Carteira, histórico e visão geral</text>
+<path d="M831.859375,499.296875H1355" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="831.86" y="533.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Preço médio, registros e patrimônio</text>
+<path d="M85,557.296875H309.203125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="85.00" y="591.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">RF12</text>
+<path d="M309.203125,557.296875H831.859375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="309.20" y="591.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Ranking</text>
+<path d="M831.859375,557.296875H1355" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="831.86" y="591.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Classificação pelo patrimônio total</text>
+<path d="M85,615.296875H309.203125" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="85.00" y="649.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">RNF07–RNF08</text>
+<path d="M309.203125,615.296875H831.859375" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="309.20" y="649.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Desktop, celular e estados</text>
+<path d="M831.859375,615.296875H1355" stroke="rgb(232, 238, 233)" stroke-width="1"/>
+<text x="831.86" y="649.81" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Contraste, foco, rótulos e adaptação</text>
+<rect x="60" y="721.796875" width="648" height="171.890625" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="85.00" y="770.29" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-0.5">Atividade de entrega</text>
+<text x="85.00" y="814.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">Mockups detalhados, fluxo de CRUD, perfis, planejamento de acessibilidade e diferenciais</text>
+<text x="85.00" y="838.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">estão representados neste conjunto.</text>
+<rect x="732" y="721.796875" width="648" height="171.890625" rx="17" fill="rgb(255, 255, 255)"/>
+<text x="757.00" y="770.29" font-family="Segoe UI, Arial, sans-serif" font-size="23" font-weight="700" fill="rgb(23, 46, 39)" text-anchor="start" letter-spacing="-0.5">Itens separados da interface</text>
+<text x="757.00" y="814.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">O grupo ainda precisa demonstrar o esqueleto Spring Boot, camadas, segurança e banco;</text>
+<text x="757.00" y="838.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">apresentar o diagrama de casos de uso e incluir os integrantes na entrega. Este protótipo</text>
+<text x="757.00" y="862.49" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="400" fill="rgb(23, 46, 39)" text-anchor="start">não comprova esses itens técnicos.</text>
+</svg>

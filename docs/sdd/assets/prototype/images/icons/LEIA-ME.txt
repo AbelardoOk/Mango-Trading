@@ -1,0 +1,1 @@
+SVGs com texto e formas editáveis. Para importar no Figma: arraste o arquivo SVG para a página de design. Use as imagens PNG para inserir nos slides e no documento. A navegação e os formulários funcionam no arquivo mango-trading.html; os SVGs são mockups estáticos.
