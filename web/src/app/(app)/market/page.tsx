@@ -15,12 +15,17 @@ export default function MarketPage() {
   const [sector, setSector] = useState("Todos os setores");
   const [error, setError] = useState<unknown>(null);
   const [events, setEvents] = useState<MarketEventResponse[]>([]);
+  const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
     listStocks().then(setStocks).catch(setError);
     listEvents().then(setEvents).catch(() => {});
     const id = setInterval(() => listEvents().then(setEvents).catch(() => {}), 30000);
-    return () => clearInterval(id);
+    const tick = setInterval(() => setNow(new Date()), 30000);
+    return () => {
+      clearInterval(id);
+      clearInterval(tick);
+    };
   }, []);
 
   const sectors = useMemo(() => ["Todos os setores", ...Array.from(new Set(stocks.map((s) => s.sector).filter(Boolean)))], [stocks]);
@@ -35,6 +40,16 @@ export default function MarketPage() {
   function formatNext(iso?: string) {
     if (!iso) return "";
     return new Date(iso).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+  }
+  function formatRemaining(endIso?: string) {
+    if (!endIso) return "";
+    const diff = new Date(endIso).getTime() - now.getTime();
+    if (diff <= 0) return "evento encerrado";
+    const totalMinutes = Math.floor(diff / 60000);
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    if (hours > 0) return `faltam ${hours} horas e ${minutes} minutos para acabar o evento`;
+    return `faltam ${minutes} minutos para acabar o evento`;
   }
 
   return (
@@ -63,7 +78,7 @@ export default function MarketPage() {
               <span className="text-xs font-bold tracking-widest text-[#174f3d]">EVENTO ATIVO</span>
               {active.map((e) => (
                 <div key={e.id} className="text-sm">
-                  <strong>{e.title}</strong> — impacto {e.impact} {e.priceDeltaPercent ? `(${e.priceDeltaPercent}%)` : ""} {e.scope === "SECTOR" ? `em ${e.sector}` : "geral"} • até {e.endDate ? new Date(e.endDate).toLocaleTimeString("pt-BR") : "—"}
+                  <strong>{e.title}</strong> — impacto {e.impact} {e.priceDeltaPercent ? `(${e.priceDeltaPercent}%)` : ""} {e.scope === "SECTOR" ? `em ${e.sector}` : "geral"} • {formatRemaining(e.endDate)}
                 </div>
               ))}
             </div>
