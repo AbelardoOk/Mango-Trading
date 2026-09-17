@@ -17,6 +17,11 @@ export default function DashboardPage() {
   useEffect(() => {
     getPortfolio().then(setPortfolio).catch(setError);
     getRanking().then(setRanking).catch(setError);
+    const id = setInterval(() => {
+      getPortfolio().then(setPortfolio).catch(() => {});
+      getRanking().then(setRanking).catch(() => {});
+    }, 5000);
+    return () => clearInterval(id);
   }, []);
 
   return (

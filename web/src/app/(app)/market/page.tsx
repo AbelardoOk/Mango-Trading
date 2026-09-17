@@ -3,29 +3,32 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { AuthGuard } from "@/components/AuthGuard";
 import { Shell } from "@/components/Shell";
-import { listStocks } from "@/services/api/stocks";
-import { listEvents } from "@/services/api/events";
-import { MarketEventResponse, StockResponse } from "@/types/api";
 import { formatMoney } from "@/lib/money";
 import { ApiErrorAlert } from "@/components/ApiError";
+import { useStockStream } from "@/hooks/useStockStream";
+import { useEventStream } from "@/hooks/useEventStream";
+import { getPortfolio } from "@/services/api/portfolio";
+import { PortfolioResponse } from "@/types/api";
+import { GrowthTag } from "@/components/GrowthTag";
 
 export default function MarketPage() {
-  const [stocks, setStocks] = useState<StockResponse[]>([]);
+  const { stocks, connected } = useStockStream();
+  const { events } = useEventStream();
   const [q, setQ] = useState("");
   const [sector, setSector] = useState("Todos os setores");
   const [error, setError] = useState<unknown>(null);
-  const [events, setEvents] = useState<MarketEventResponse[]>([]);
   const [now, setNow] = useState(() => new Date());
+  const [portfolio, setPortfolio] = useState<PortfolioResponse | null>(null);
 
   useEffect(() => {
-    listStocks().then(setStocks).catch(setError);
-    listEvents().then(setEvents).catch(() => {});
-    const id = setInterval(() => listEvents().then(setEvents).catch(() => {}), 30000);
-    const tick = setInterval(() => setNow(new Date()), 30000);
-    return () => {
-      clearInterval(id);
-      clearInterval(tick);
-    };
+    const tick = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(tick);
+  }, []);
+
+  useEffect(() => {
+    getPortfolio().then(setPortfolio).catch(() => {});
+    const id = setInterval(() => getPortfolio().then(setPortfolio).catch(() => {}), 5000);
+    return () => clearInterval(id);
   }, []);
 
   const sectors = useMemo(() => ["Todos os setores", ...Array.from(new Set(stocks.map((s) => s.sector).filter(Boolean)))], [stocks]);
@@ -56,9 +59,12 @@ export default function MarketPage() {
     <AuthGuard>
       <Shell>
         <div className="flex flex-col gap-4">
-          <div>
-            <h1 className="text-2xl font-bold">Mercado de ações</h1>
-            <p className="text-sm text-[#4a5a52]">Explore empresas fictícias e encontre seu próximo movimento.</p>
+          <div className="flex justify-between items-start">
+            <div>
+              <h1 className="text-2xl font-bold">Mercado de ações</h1>
+              <p className="text-sm text-[#4a5a52]">Explore empresas fictícias e encontre seu próximo movimento.</p>
+            </div>
+            <span className={`text-xs px-2 py-1 rounded-full ${connected ? "bg-[#e8f1eb] text-[#174f3d]" : "bg-[#fff0d6] text-[#754600]"}`}>{connected ? "Tempo real ●" : "Polling"}</span>
           </div>
           {upcoming.length > 0 && (
             <div className="bg-[#fff0d6] border border-[#f5ac45] rounded-xl p-4 flex flex-col gap-1">
@@ -103,45 +109,59 @@ export default function MarketPage() {
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((s) => (
-                  <tr key={s.id} className="border-t">
-                    <td className="p-4">
-                      <div className="flex gap-3 items-center">
-                        <div className="w-9 h-9 bg-[#e8f1eb] rounded-lg flex items-center justify-center text-xs font-bold text-[#174f3d]">{s.symbol.slice(0, 2)}</div>
-                        <div>
-                          <div className="font-semibold">{s.name}</div>
-                          <div className="text-xs text-[#4a5a52]">{s.symbol} · {s.sector}</div>
+                {filtered.map((s) => {
+                  const owned = portfolio?.items.find((it) => it.stockId === s.id);
+                  return (
+                    <tr key={s.id} className="border-t">
+                      <td className="p-4">
+                        <div className="flex gap-3 items-center">
+                          <div className="w-9 h-9 bg-[#e8f1eb] rounded-lg flex items-center justify-center text-xs font-bold text-[#174f3d]">{s.symbol.slice(0, 2)}</div>
+                          <div>
+                            <div className="font-semibold">{s.name}</div>
+                            <div className="text-xs text-[#4a5a52]">{s.symbol} · {s.sector}</div>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="p-4 font-semibold">{formatMoney(s.currentPrice)}</td>
-                    <td className="p-4">{s.volatility ? `${(s.volatility * 100).toFixed(2).replace(".", ",")}%` : "—"}</td>
-                    <td className="p-4">
-                      <Link href={`/market/${s.id}`} className="bg-[#e8f1eb] text-[#174f3d] px-4 py-2 rounded-lg text-xs">Negociar →</Link>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                      <td className="p-4">
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold">{formatMoney(s.currentPrice)}</span>
+                          {owned && <GrowthTag current={s.currentPrice} average={owned.averagePrice} />}
+                        </div>
+                      </td>
+                      <td className="p-4">{s.volatility ? `${(s.volatility * 100).toFixed(2).replace(".", ",")}%` : "—"}</td>
+                      <td className="p-4">
+                        <Link href={`/market/${s.id}`} className="bg-[#e8f1eb] text-[#174f3d] px-4 py-2 rounded-lg text-xs">Negociar →</Link>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
             {filtered.length === 0 && <p className="p-8 text-center text-sm text-[#4a5a52]">Nenhuma empresa encontrada.</p>}
           </div>
           <div className="md:hidden flex flex-col gap-3">
-            {filtered.map((s) => (
-              <div key={s.id} className="bg-white rounded-xl border p-4 flex flex-col gap-3">
-                <div className="flex gap-3 items-center">
-                  <div className="w-9 h-9 bg-[#e8f1eb] rounded-lg flex items-center justify-center text-xs font-bold text-[#174f3d]">{s.symbol.slice(0, 2)}</div>
-                  <div>
-                    <div className="font-semibold">{s.name}</div>
-                    <div className="text-xs text-[#4a5a52]">{s.symbol} · {s.sector}</div>
+            {filtered.map((s) => {
+              const owned = portfolio?.items.find((it) => it.stockId === s.id);
+              return (
+                <div key={s.id} className="bg-white rounded-xl border p-4 flex flex-col gap-3">
+                  <div className="flex gap-3 items-center">
+                    <div className="w-9 h-9 bg-[#e8f1eb] rounded-lg flex items-center justify-center text-xs font-bold text-[#174f3d]">{s.symbol.slice(0, 2)}</div>
+                    <div>
+                      <div className="font-semibold">{s.name}</div>
+                      <div className="text-xs text-[#4a5a52]">{s.symbol} · {s.sector}</div>
+                    </div>
                   </div>
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold">{formatMoney(s.currentPrice)}</span>
+                      {owned && <GrowthTag current={s.currentPrice} average={owned.averagePrice} />}
+                    </div>
+                    <span className="text-sm text-[#4a5a52]">{s.volatility ? `${(s.volatility * 100).toFixed(2)}%` : ""}</span>
+                  </div>
+                  <Link href={`/market/${s.id}`} className="bg-[#e8f1eb] text-[#174f3d] py-3 rounded-lg text-center">Negociar →</Link>
                 </div>
-                <div className="flex justify-between">
-                  <span className="font-bold">{formatMoney(s.currentPrice)}</span>
-                  <span className="text-sm text-[#4a5a52]">{s.volatility ? `${(s.volatility * 100).toFixed(2)}%` : ""}</span>
-                </div>
-                <Link href={`/market/${s.id}`} className="bg-[#e8f1eb] text-[#174f3d] py-3 rounded-lg text-center">Negociar →</Link>
-              </div>
-            ))}
+              );
+            })}
           </div>
           <p className="text-xs text-[#4a5a52]">Todas empresas e cotações são fictícias. Operações usam saldo virtual.</p>
         </div>

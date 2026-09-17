@@ -1,0 +1,128 @@
+[
+  {
+    "name": "Mango Tech",
+    "symbol": "MANG3",
+    "description": "Empresa fictícia de tecnologia — software e cloud",
+    "sector": "Tecnologia",
+    "currentPrice": 42.50,
+    "volatility": 0.025,
+    "active": true
+  },
+  {
+    "name": "Aurora Energia",
+    "symbol": "AURA3",
+    "description": "Geração de energia renovável",
+    "sector": "Energia",
+    "currentPrice": 31.00,
+    "volatility": 0.018,
+    "active": true
+  },
+  {
+    "name": "Verde Agro",
+    "symbol": "VERD3",
+    "description": "Agronegócio sustentável",
+    "sector": "Agronegócio",
+    "currentPrice": 28.40,
+    "volatility": 0.015,
+    "active": true
+  },
+  {
+    "name": "Brisa Logística",
+    "symbol": "BRIS3",
+    "description": "Transporte e distribuição",
+    "sector": "Logística",
+    "currentPrice": 24.80,
+    "volatility": 0.012,
+    "active": true
+  },
+  {
+    "name": "Nexo Tecnologia",
+    "symbol": "NEXO3",
+    "description": "Infraestrutura digital",
+    "sector": "Tecnologia",
+    "currentPrice": 65.00,
+    "volatility": 0.03,
+    "active": true
+  },
+  {
+    "name": "Solare Energia",
+    "symbol": "SOLR3",
+    "description": "Soluções solares fictícias",
+    "sector": "Energia",
+    "currentPrice": 18.50,
+    "volatility": 0.022,
+    "active": true
+  },
+  {
+    "name": "Viva Saúde",
+    "symbol": "VIVA3",
+    "description": "Rede fictícia de saúde e bem-estar",
+    "sector": "Saúde",
+    "currentPrice": 53.20,
+    "volatility": 0.016,
+    "active": true
+  },
+  {
+    "name": "Capital Finance",
+    "symbol": "CAPF3",
+    "description": "Serviços financeiros fictícios",
+    "sector": "Financeiro",
+    "currentPrice": 38.90,
+    "volatility": 0.02,
+    "active": true
+  },
+  {
+    "name": "Educa Prime",
+    "symbol": "EDUC3",
+    "description": "Educação e tecnologia",
+    "sector": "Educação",
+    "currentPrice": 15.30,
+    "volatility": 0.014,
+    "active": true
+  },
+  {
+    "name": "Terra Mineração",
+    "symbol": "TERA3",
+    "description": "Mineração fictícia",
+    "sector": "Mineração",
+    "currentPrice": 72.10,
+    "volatility": 0.028,
+    "active": true
+  },
+  {
+    "name": "Ocean Logística",
+    "symbol": "OCEN3",
+    "description": "Logística marítima fictícia",
+    "sector": "Logística",
+    "currentPrice": 22.60,
+    "volatility": 0.011,
+    "active": true
+  },
+  {
+    "name": "Bio Farma",
+    "symbol": "BIOF3",
+    "description": "Farmacêutica fictícia",
+    "sector": "Saúde",
+    "currentPrice": 61.40,
+    "volatility": 0.019,
+    "active": true
+  },
+  {
+    "name": "Conecta Telecom",
+    "symbol": "CONE3",
+    "description": "Telecomunicações fictícias",
+    "sector": "Tecnologia",
+    "currentPrice": 33.75,
+    "volatility": 0.017,
+    "active": false
+  },
+  {
+    "name": "Agro Futuro",
+    "symbol": "AGRF3",
+    "description": "Inovação no campo",
+    "sector": "Agronegócio",
+    "currentPrice": 19.80,
+    "volatility": 0.013,
+    "active": true
+  }
+]

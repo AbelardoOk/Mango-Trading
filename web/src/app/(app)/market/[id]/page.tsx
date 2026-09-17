@@ -10,6 +10,7 @@ import { StockResponse } from "@/types/api";
 import { formatMoney } from "@/lib/money";
 import { ApiErrorAlert } from "@/components/ApiError";
 import { ApiError } from "@/types/api";
+import { GrowthTag } from "@/components/GrowthTag";
 
 export default function TradePage() {
   const params = useParams<{ id: string }>();
@@ -18,6 +19,7 @@ export default function TradePage() {
   const [stock, setStock] = useState<StockResponse | null>(null);
   const [balance, setBalance] = useState<number>(0);
   const [owned, setOwned] = useState<number>(0);
+  const [average, setAverage] = useState<number | null>(null);
   const [qty, setQty] = useState(10);
   const [tab, setTab] = useState<"buy" | "sell">("buy");
   const [error, setError] = useState<unknown>(null);
@@ -30,6 +32,7 @@ export default function TradePage() {
         setBalance(p.balance);
         const item = p.items.find((it) => it.stockId === id);
         setOwned(item?.quantity ?? 0);
+        setAverage(item?.averagePrice ?? null);
       })
       .catch(() => {});
   }, [id]);
@@ -79,10 +82,13 @@ export default function TradePage() {
           <div className="bg-white rounded-xl border p-6 flex flex-col gap-4">
             <span className="text-xs bg-[#e8f1eb] text-[#174f3d] px-3 py-1 rounded-full w-fit">{stock.symbol} · {stock.sector}</span>
             <h2 className="text-2xl font-bold">{stock.name}</h2>
-            <div className="text-3xl font-bold">{formatMoney(stock.currentPrice)}</div>
+            <div className="flex items-center gap-2">
+              <div className="text-3xl font-bold">{formatMoney(stock.currentPrice)}</div>
+              {average != null && <GrowthTag current={stock.currentPrice} average={average} />}
+            </div>
             <p className="text-sm text-[#4a5a52]">{stock.description}</p>
             <hr />
-            <p className="text-sm">Na carteira: <strong>{owned} ações</strong></p>
+            <p className="text-sm">Na carteira: <strong>{owned} ações</strong> {average != null && <span className="text-xs text-[#4a5a52]">· média {formatMoney(average)}</span>}</p>
             <p className="text-sm">Saldo: <strong>{formatMoney(balance)}</strong></p>
           </div>
           <div className="bg-white rounded-xl border p-6 flex flex-col gap-4">

@@ -36,6 +36,8 @@ public class EventScheduler {
     private final StockPriceHistoryRepository stockPriceHistoryRepository;
     private final MarketEventOccurrenceRepository occurrenceRepository;
     private final MarketEventService marketEventService;
+    private final SseService sseService;
+    private final StockService stockService;
 
     @Value("${events.scheduler.enabled:true}")
     private boolean schedulerEnabled;
@@ -57,6 +59,12 @@ public class EventScheduler {
     public void tick() {
         if (!schedulerEnabled) return;
         LocalDateTime now = LocalDateTime.now();
+        // Always broadcast visible events to keep UPCOMING countdown fresh (3min visibility)
+        try {
+            sseService.broadcastEvents(marketEventService.findVisibleForPlayer());
+        } catch (Exception e) {
+            log.debug("SSE events periodic broadcast skipped", e);
+        }
         List<MarketEvent> due = marketEventRepository.findByEnabledTrueAndNextRunAtBefore(now);
         if (due.isEmpty()) return;
 
@@ -126,6 +134,14 @@ public class EventScheduler {
             }
             marketEventRepository.save(event);
             log.info("Event {} '{}' executed, nextRunAt={}", event.getId(), event.getTitle(), next);
+        }
+
+        // Broadcast updated stocks and events via SSE (real-time)
+        try {
+            sseService.broadcastStocks(stockService.findActive());
+            sseService.broadcastEvents(marketEventService.findVisibleForPlayer());
+        } catch (Exception e) {
+            log.warn("SSE broadcast failed", e);
         }
     }
 

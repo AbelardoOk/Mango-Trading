@@ -28,7 +28,8 @@ Conflicts resolved by this priority. `prototype` is visual contract (read-only).
 | 9 | `docs/sdd/08-testing-quality.md` | Verification |
 | 10 | `docs/sdd/09-traceability.md` | Matrix RF→SDD→Code |
 | 11 | `docs/sdd/10-agent-guide.md` | How to work autonomously |
-| 12 | `specs/002-prototype-to-mvp/spec.md` | Next feature (prototype parity) |
+| 12 | `docs/sdd/11-realtime.md` | SSE realtime (stocks/events) |
+| 13 | `specs/002-prototype-to-mvp/spec.md` | Next feature (prototype parity) |
 
 Agents **must** read in order. Do not edit `assets/prototype/` — clone only.
 
@@ -40,13 +41,14 @@ docs/sdd/
 ├── 02-architecture.md
 ├── 03-data-model.md
 ├── 04-api-contracts.md
-├── openapi.yaml               # machine-readable contract (22 endpoints)
+├── openapi.yaml               # machine-readable contract (26 endpoints incl. stream)
 ├── 05-business-rules.md
 ├── 06-security.md
 ├── 07-frontend.md             # references assets/prototype/
 ├── 08-testing-quality.md
 ├── 09-traceability.md
 ├── 10-agent-guide.md
+├── 11-realtime.md             # SSE push (stocks/events)
 └── assets/prototype/
     ├── README.md
     ├── figma-link.md

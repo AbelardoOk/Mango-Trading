@@ -525,3 +525,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserResponse'
         '404': { description: Not found }
+  /api/stream/stocks:
+    get:
+      summary: SSE stocks stream (real-time)
+      parameters:
+        - { name: token, in: query, required: true, schema: { type: string }, description: "JWT via ?token= (EventSource cannot send Authorization header)" }
+      responses:
+        '200':
+          description: text/event-stream
+          content:
+            text/event-stream:
+              schema: { type: string, example: "event: stocks\ndata: [...]\" " }
+        '401': { description: Unauthorized }
+  /api/stream/events:
+    get:
+      summary: SSE events stream (UPCOMING/ACTIVE)
+      parameters:
+        - { name: token, in: query, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: text/event-stream
+          content:
+            text/event-stream:
+              schema: { type: string }
+        '401': { description: Unauthorized }

@@ -41,6 +41,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Visitante: apenas cadastro/login
                         .requestMatchers("/api/auth/**").permitAll()
+                        // SSE stream (auth via ?token= query, validated inside controller)
+                        .requestMatchers("/api/stream/**").permitAll()
                         // Health / docs públicos se existirem
                         .requestMatchers("/error").permitAll()
                         // ADMIN: total para gerenciar empresas/ações/eventos e usuários

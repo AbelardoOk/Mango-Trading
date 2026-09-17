@@ -7,6 +7,7 @@ import { getPortfolio } from "@/services/api/portfolio";
 import { PortfolioResponse } from "@/types/api";
 import { formatMoney } from "@/lib/money";
 import { ApiErrorAlert } from "@/components/ApiError";
+import { GrowthTag } from "@/components/GrowthTag";
 
 export default function WalletPage() {
   const [p, setP] = useState<PortfolioResponse | null>(null);
@@ -14,6 +15,8 @@ export default function WalletPage() {
 
   useEffect(() => {
     getPortfolio().then(setP).catch(setError);
+    const id = setInterval(() => getPortfolio().then(setP).catch(() => {}), 5000);
+    return () => clearInterval(id);
   }, []);
 
   if (error) return <AuthGuard><Shell><ApiErrorAlert error={error} /></Shell></AuthGuard>;
@@ -47,12 +50,17 @@ export default function WalletPage() {
                   <tr><th className="p-4 text-left">ATIVO</th><th className="p-4">QTD.</th><th className="p-4">PREÇO MÉDIO</th><th className="p-4">ATUAL</th><th className="p-4">VALOR ATUAL</th><th className="p-4">RESULTADO</th><th className="p-4"></th></tr>
                 </thead>
                 <tbody>
-                  {p.items.map((it) => (
+                    {p.items.map((it) => (
                     <tr key={it.id} className="border-t">
                       <td className="p-4"><div className="font-bold">{it.stockSymbol}</div><div className="text-xs text-[#4a5a52]">{it.stockName}</div></td>
                       <td className="p-4 text-center">{it.quantity}</td>
                       <td className="p-4">{formatMoney(it.averagePrice)}</td>
-                      <td className="p-4">{formatMoney(it.currentPrice)}</td>
+                      <td className="p-4">
+                        <div className="flex items-center gap-2">
+                          <span>{formatMoney(it.currentPrice)}</span>
+                          <GrowthTag current={it.currentPrice} average={it.averagePrice} quantity={it.quantity} />
+                        </div>
+                      </td>
                       <td className="p-4 font-bold">{formatMoney(it.currentValue)}</td>
                       <td className={`p-4 ${it.profitLoss >= 0 ? "text-[#174f3d]" : "text-[#ad342c]"}`}>{it.profitLoss >= 0 ? "+" : "−"}{formatMoney(Math.abs(it.profitLoss))} <span className="text-xs">({it.profitLossPercent.toFixed(2)}%)</span></td>
                       <td className="p-4"><Link href={`/market/${it.stockId}`} className="bg-[#e8f1eb] text-[#174f3d] px-3 py-1 rounded text-xs">Vender</Link></td>
