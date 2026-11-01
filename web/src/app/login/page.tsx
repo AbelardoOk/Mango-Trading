@@ -1,5 +1,6 @@
 "use client";
 import { ApiErrorAlert } from "@/components/ApiError";
+import { SocialLoginButtons } from "@/components/SocialLoginButtons";
 import { useAuth } from "@/hooks/useAuth";
 import { ApiError } from "@/types/api";
 import Link from "next/link";
@@ -81,6 +82,7 @@ export default function LoginPage() {
           >
             {loading ? "Entrando..." : "Entrar →"}
           </button>
+          <SocialLoginButtons onError={setError} />
           <p className="text-sm text-center">
             Ainda não tem conta?{" "}
             <Link href="/register" className="text-[#174f3d] font-semibold">

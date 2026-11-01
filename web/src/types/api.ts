@@ -12,6 +12,15 @@ export interface LoginRequest {
   password: string;
 }
 
+export interface GoogleLoginRequest {
+  idToken: string;
+}
+
+export interface TiktokLoginRequest {
+  code: string;
+  redirectUri: string;
+}
+
 export interface TradeRequest {
   stockId: number;
   quantity: number;

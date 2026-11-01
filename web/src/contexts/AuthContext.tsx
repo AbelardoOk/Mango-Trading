@@ -13,6 +13,8 @@ type AuthContextType = {
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
   register: (name: string, email: string, password: string) => Promise<void>;
+  loginWithGoogle: (idToken: string) => Promise<void>;
+  loginWithTiktok: (code: string, redirectUri: string) => Promise<void>;
   logout: () => void;
 };
 
@@ -24,6 +26,8 @@ export const AuthContext = createContext<AuthContextType>({
   loading: true,
   login: async () => {},
   register: async () => {},
+  loginWithGoogle: async () => {},
+  loginWithTiktok: async () => {},
   logout: () => {},
 });
 
@@ -68,6 +72,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     persist(jwt);
   }, []);
 
+  const loginWithGoogle = useCallback(async (idToken: string) => {
+    const jwt = await authApi.loginWithGoogle({ idToken });
+    persist(jwt);
+  }, []);
+
+  const loginWithTiktok = useCallback(async (code: string, redirectUri: string) => {
+    const jwt = await authApi.loginWithTiktok({ code, redirectUri });
+    persist(jwt);
+  }, []);
+
   const logout = useCallback(() => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -78,7 +92,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, token, isAuthenticated: !!token, isAdmin: user?.role === "ADMIN", loading, login, register, logout }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        token,
+        isAuthenticated: !!token,
+        isAdmin: user?.role === "ADMIN",
+        loading,
+        login,
+        register,
+        loginWithGoogle,
+        loginWithTiktok,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

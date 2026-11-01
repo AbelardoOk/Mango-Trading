@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import { ApiErrorAlert } from "@/components/ApiError";
+import { SocialLoginButtons } from "@/components/SocialLoginButtons";
 
 export default function RegisterPage() {
   const { register } = useAuth();
@@ -56,6 +57,7 @@ export default function RegisterPage() {
           <button type="submit" disabled={loading} className="bg-[#174f3d] text-white rounded-lg py-3 font-semibold disabled:opacity-50">
             {loading ? "Criando..." : "Criar conta →"}
           </button>
+          <SocialLoginButtons onError={setError} />
           <p className="text-sm text-center">
             Já tem conta? <Link href="/login" className="text-[#174f3d] font-semibold">Entrar</Link>
           </p>
