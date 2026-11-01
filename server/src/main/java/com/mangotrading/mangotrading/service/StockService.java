@@ -115,6 +115,22 @@ public class StockService {
     }
 
     private StockResponse toResponse(Stock stock) {
+        BigDecimal previousPrice = null;
+        BigDecimal priceChangeValue = null;
+        Double priceChangePercent = null;
+        try {
+            var history = priceHistoryRepository.findTop2ByStockIdOrderByCreatedAtDesc(stock.getId());
+            // history[0] is current (latest), history[1] is previous (24h fallback)
+            if (history.size() >= 2) {
+                previousPrice = history.get(1).getPrice();
+            } else if (history.size() == 1 && history.get(0).getPrice().compareTo(stock.getCurrentPrice()) != 0) {
+                previousPrice = history.get(0).getPrice();
+            }
+            if (previousPrice != null && previousPrice.compareTo(BigDecimal.ZERO) != 0) {
+                priceChangeValue = stock.getCurrentPrice().subtract(previousPrice);
+                priceChangePercent = priceChangeValue.divide(previousPrice, 10, java.math.RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)).doubleValue();
+            }
+        } catch (Exception ignored) {}
         return StockResponse.builder()
                 .id(stock.getId())
                 .name(stock.getName())
@@ -126,6 +142,9 @@ public class StockService {
                 .active(stock.getActive())
                 .createdAt(stock.getCreatedAt())
                 .updatedAt(stock.getUpdatedAt())
+                .previousPrice(previousPrice)
+                .priceChangeValue(priceChangeValue)
+                .priceChangePercent(priceChangePercent)
                 .build();
     }
 }

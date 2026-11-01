@@ -78,6 +78,9 @@ export interface StockResponse {
   active: boolean;
   createdAt: string;
   updatedAt: string;
+  previousPrice?: number | null;
+  priceChangeValue?: number | null;
+  priceChangePercent?: number | null;
 }
 
 export interface MarketEventResponse {

@@ -125,10 +125,10 @@ export default function MarketPage() {
                       <td className="p-4">
                         <div className="flex items-center gap-2">
                           <span className="font-semibold">{formatMoney(s.currentPrice)}</span>
-                          {owned && <GrowthTag current={s.currentPrice} average={owned.averagePrice} />}
+                          <GrowthTag current={s.currentPrice} average={owned?.averagePrice} previousPrice={s.previousPrice} />
                         </div>
                       </td>
-                      <td className="p-4">{s.volatility ? `${(s.volatility * 100).toFixed(2).replace(".", ",")}%` : "—"}</td>
+                      <td className={`p-4 ${s.priceChangePercent == null || Math.abs(s.priceChangePercent) <= 0.5 ? "text-[#4a5a52]" : s.priceChangePercent > 0 ? "text-[#174f3d]" : "text-[#ad342c]"}`}>{s.volatility ? `${(s.volatility * 100).toFixed(2).replace(".", ",")}%` : "—"}</td>
                       <td className="p-4">
                         <Link href={`/market/${s.id}`} className="bg-[#e8f1eb] text-[#174f3d] px-4 py-2 rounded-lg text-xs">Negociar →</Link>
                       </td>
@@ -154,9 +154,9 @@ export default function MarketPage() {
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
                       <span className="font-bold">{formatMoney(s.currentPrice)}</span>
-                      {owned && <GrowthTag current={s.currentPrice} average={owned.averagePrice} />}
+                      <GrowthTag current={s.currentPrice} average={owned?.averagePrice} previousPrice={s.previousPrice} />
                     </div>
-                    <span className="text-sm text-[#4a5a52]">{s.volatility ? `${(s.volatility * 100).toFixed(2)}%` : ""}</span>
+                    <span className={`text-sm ${s.priceChangePercent == null || Math.abs(s.priceChangePercent) <= 0.5 ? "text-[#4a5a52]" : s.priceChangePercent > 0 ? "text-[#174f3d]" : "text-[#ad342c]"}`}>{s.volatility ? `${(s.volatility * 100).toFixed(2)}%` : ""}</span>
                   </div>
                   <Link href={`/market/${s.id}`} className="bg-[#e8f1eb] text-[#174f3d] py-3 rounded-lg text-center">Negociar →</Link>
                 </div>

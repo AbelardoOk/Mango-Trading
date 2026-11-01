@@ -12,4 +12,6 @@ public interface StockPriceHistoryRepository extends JpaRepository<StockPriceHis
     List<StockPriceHistory> findByStockIdOrderByCreatedAtDesc(Long stockId);
 
     List<StockPriceHistory> findTop20ByStockIdOrderByCreatedAtDesc(Long stockId);
+
+    List<StockPriceHistory> findTop2ByStockIdOrderByCreatedAtDesc(Long stockId);
 }

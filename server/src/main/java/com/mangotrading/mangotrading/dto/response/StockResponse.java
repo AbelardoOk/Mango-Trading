@@ -23,4 +23,7 @@ public class StockResponse {
     private Boolean active;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private BigDecimal previousPrice;
+    private BigDecimal priceChangeValue;
+    private Double priceChangePercent;
 }

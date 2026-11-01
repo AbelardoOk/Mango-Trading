@@ -84,7 +84,7 @@ export default function TradePage() {
             <h2 className="text-2xl font-bold">{stock.name}</h2>
             <div className="flex items-center gap-2">
               <div className="text-3xl font-bold">{formatMoney(stock.currentPrice)}</div>
-              {average != null && <GrowthTag current={stock.currentPrice} average={average} />}
+              <GrowthTag current={stock.currentPrice} average={average} previousPrice={stock.previousPrice} />
             </div>
             <p className="text-sm text-[#4a5a52]">{stock.description}</p>
             <hr />
