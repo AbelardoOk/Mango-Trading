@@ -166,6 +166,26 @@ export interface RankingResponse {
   totalPatrimony: number;
 }
 
+export interface PricePoint {
+  timestamp: string;
+  price: number;
+}
+
+export interface PortfolioHistoryPoint {
+  timestamp: string;
+  patrimony: number;
+  balance: number;
+  stockValue: number;
+}
+
+export interface PortfolioLiveResponse {
+  portfolio: PortfolioResponse;
+  point: PortfolioHistoryPoint;
+}
+
+export type ReportFormat = "csv" | "pdf";
+export type ReportKind = "trades" | "portfolio" | "ranking" | "admin/stocks" | "admin/users";
+
 export interface ErrorEnvelope {
   timestamp?: string;
   status: number;

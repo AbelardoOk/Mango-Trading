@@ -20,6 +20,8 @@
 | RF12 | Ranking | `05 RB05`, `04 /ranking` | `RankingController`, `RankingService:25` | `10-ranking.png` | `001 US10` | ✅ |
 | (events) | List events (user) + CRUD admin | `04 /events`, `/admin/events` | `MarketEventController`, `AdminMarketEventController`, `MarketEventService` | `15-eventos.png`, `16-evento-formulario.png` | `001 US11` | ✅ server |
 | (users) | List users admin | `04 /admin/users` | `AdminUserController`, `UserService` | `17-usuarios.png` | `001 US12` | ✅ server |
+| (charts) | Real-time patrimony/price charts | `11`, `04 Charts` | `StockHistoryService`, `PortfolioHistoryService`, `SseService`, `StreamController`, `PortfolioController` | `03-visao-geral.png`, `04-mercado.png`, `08-carteira.png` | `003 US1/US2` | ✅ |
+| (reports) | CSV/PDF report export | `04 Reports` | `ReportController`, `ReportService`, `CsvReportWriter`, `PdfReportBuilder` | `03,08,09,10,11,17` | `003 US3` | ✅ |
 
 ## 09.2 RNF → SDD → Verification
 
@@ -69,4 +71,5 @@ Count: `png 25, svg 26` (including `LEIA-ME.txt` in icons folder, not a screen).
 
 ## 09.4 Endpoints vs OpenAPI
 
-- Controllers grep `22` endpoints (`@*Mapping`). `openapi.yaml` declares `22` paths — parity ✅.
+- Controllers grep `30` endpoints (`@*Mapping`). `openapi.yaml` declares `30` paths — parity ✅.
+- Added in `003`: `GET /api/stocks/{id}/history`, `GET /api/portfolio/history`, `GET /api/stream/portfolio`, and 5 `/api/reports/**` exports (CSV/PDF).

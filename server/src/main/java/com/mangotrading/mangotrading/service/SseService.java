@@ -8,6 +8,8 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @Slf4j
@@ -18,6 +20,7 @@ public class SseService {
     private final ObjectMapper objectMapper;
     private final List<SseEmitter> stockEmitters = new CopyOnWriteArrayList<>();
     private final List<SseEmitter> eventEmitters = new CopyOnWriteArrayList<>();
+    private final Map<Long, List<SseEmitter>> portfolioEmitters = new ConcurrentHashMap<>();
 
     public SseEmitter subscribeStocks() {
         SseEmitter emitter = new SseEmitter(0L);
@@ -49,12 +52,44 @@ public class SseService {
         return emitter;
     }
 
+    public SseEmitter subscribePortfolio(Long userId) {
+        SseEmitter emitter = new SseEmitter(0L);
+        List<SseEmitter> emitters = portfolioEmitters.computeIfAbsent(
+                userId, key -> new CopyOnWriteArrayList<>());
+        emitters.add(emitter);
+        Runnable remove = () -> {
+            emitters.remove(emitter);
+            if (emitters.isEmpty()) {
+                portfolioEmitters.remove(userId, emitters);
+            }
+        };
+        emitter.onCompletion(remove);
+        emitter.onTimeout(remove);
+        emitter.onError(e -> remove.run());
+        try {
+            emitter.send(SseEmitter.event().name("init").data("connected"));
+        } catch (IOException e) {
+            remove.run();
+        }
+        log.info("SSE portfolio subscriber added for user {}, total {}", userId, emitters.size());
+        return emitter;
+    }
+
     public void broadcastStocks(Object payload) {
         broadcast(stockEmitters, "stocks", payload);
     }
 
     public void broadcastEvents(Object payload) {
         broadcast(eventEmitters, "events", payload);
+    }
+
+    public void broadcastPortfolio(Long userId, Object payload) {
+        List<SseEmitter> emitters = portfolioEmitters.get(userId);
+        if (emitters == null || emitters.isEmpty()) return;
+        broadcast(emitters, "portfolio", payload);
+        if (emitters.isEmpty()) {
+            portfolioEmitters.remove(userId, emitters);
+        }
     }
 
     private void broadcast(List<SseEmitter> emitters, String eventName, Object payload) {

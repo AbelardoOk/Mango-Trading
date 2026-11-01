@@ -7,6 +7,7 @@ import com.mangotrading.mangotrading.entity.Stock;
 import com.mangotrading.mangotrading.entity.Transaction;
 import com.mangotrading.mangotrading.entity.User;
 import com.mangotrading.mangotrading.entity.enums.TransactionType;
+import com.mangotrading.mangotrading.event.TradeExecutedEvent;
 import com.mangotrading.mangotrading.exception.BadRequestException;
 import com.mangotrading.mangotrading.exception.InsufficientBalanceException;
 import com.mangotrading.mangotrading.exception.InsufficientQuantityException;
@@ -17,6 +18,7 @@ import com.mangotrading.mangotrading.repository.StockRepository;
 import com.mangotrading.mangotrading.repository.TransactionRepository;
 import com.mangotrading.mangotrading.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,6 +37,7 @@ public class TradingService {
     private final PortfolioRepository portfolioRepository;
     private final PortfolioItemRepository portfolioItemRepository;
     private final TransactionRepository transactionRepository;
+    private final ApplicationEventPublisher eventPublisher;
 
     @Transactional
     public TransactionResponse buy(Long userId, Long stockId, Integer quantity) {
@@ -96,6 +99,7 @@ public class TradingService {
                 .price(price)
                 .build();
         tx = transactionRepository.save(tx);
+        eventPublisher.publishEvent(new TradeExecutedEvent(userId));
 
         return toResponse(tx);
     }
@@ -143,6 +147,7 @@ public class TradingService {
                 .price(price)
                 .build();
         tx = transactionRepository.save(tx);
+        eventPublisher.publishEvent(new TradeExecutedEvent(userId));
 
         return toResponse(tx);
     }

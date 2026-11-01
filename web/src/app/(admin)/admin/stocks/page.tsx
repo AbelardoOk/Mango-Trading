@@ -7,6 +7,7 @@ import { adminListStocks, adminDeleteStock, adminUpdateStock } from "@/services/
 import { StockResponse } from "@/types/api";
 import { formatMoney } from "@/lib/money";
 import { ApiErrorAlert } from "@/components/ApiError";
+import { ExportMenu } from "@/components/ExportMenu";
 
 export default function AdminStocksPage() {
   const [stocks, setStocks] = useState<StockResponse[]>([]);
@@ -66,7 +67,10 @@ export default function AdminStocksPage() {
               <h1 className="text-2xl font-bold">Ações e empresas</h1>
               <p className="text-sm text-[#4a5a52]">Gerencie o catálogo de ações fictícias.</p>
             </div>
-            <Link href="/admin/stocks/new" className="bg-[#174f3d] text-white px-4 py-2 rounded-lg self-start">+ Cadastrar ação</Link>
+            <div className="flex items-start gap-3">
+              <ExportMenu kind="admin/stocks" label="Exportar catálogo" />
+              <Link href="/admin/stocks/new" className="bg-[#174f3d] text-white px-4 py-2 rounded-lg self-start">+ Cadastrar ação</Link>
+            </div>
           </div>
           {toast && <div role="status" className="bg-[#e8f1eb] text-[#174f3d] px-4 py-2 rounded-lg text-sm">{toast}</div>}
           <ApiErrorAlert error={error} onClose={() => setError(null)} />

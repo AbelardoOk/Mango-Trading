@@ -1,5 +1,5 @@
 import { apiFetch } from "./client";
-import { StockResponse } from "@/types/api";
+import { PricePoint, StockResponse } from "@/types/api";
 
 export function listStocks() {
   return apiFetch<StockResponse[]>("/api/stocks");
@@ -9,4 +9,9 @@ export function listAllStocks() {
 }
 export function getStock(id: number) {
   return apiFetch<StockResponse>(`/api/stocks/${id}`);
+}
+export function getStockHistory(id: number, range: string) {
+  return apiFetch<PricePoint[]>(
+    `/api/stocks/${id}/history?range=${encodeURIComponent(range)}`
+  );
 }

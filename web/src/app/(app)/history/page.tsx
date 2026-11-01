@@ -5,26 +5,46 @@ import { Shell } from "@/components/Shell";
 import { history } from "@/services/api/trades";
 import { TransactionResponse } from "@/types/api";
 import { formatMoney } from "@/lib/money";
+import { ExportMenu } from "@/components/ExportMenu";
 
 export default function HistoryPage() {
   const [rows, setRows] = useState<TransactionResponse[]>([]);
   const [filter, setFilter] = useState<"Todas" | "BUY" | "SELL">("Todas");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
 
   useEffect(() => {
     history().then(setRows).catch(() => {});
   }, []);
 
-  const filtered = rows.filter((r) => filter === "Todas" || r.type === filter);
+  const filtered = rows.filter((r) => {
+    if (filter !== "Todas" && r.type !== filter) return false;
+    const date = new Date(r.createdAt).toISOString().slice(0, 10);
+    if (from && date < from) return false;
+    if (to && date > to) return false;
+    return true;
+  });
 
   return (
     <AuthGuard>
       <Shell>
         <div className="flex flex-col gap-4">
-          <div>
-            <h1 className="text-2xl font-bold">Histórico de transações</h1>
-            <p className="text-sm text-[#4a5a52]">Consulte suas compras e vendas.</p>
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+            <div>
+              <h1 className="text-2xl font-bold">Histórico de transações</h1>
+              <p className="text-sm text-[#4a5a52]">Consulte suas compras e vendas.</p>
+            </div>
+            <ExportMenu
+              kind="trades"
+              params={{
+                from,
+                to,
+                type: filter === "Todas" ? "" : filter,
+              }}
+              label="Exportar histórico"
+            />
           </div>
-          <div className="flex gap-4 items-end">
+          <div className="flex flex-wrap gap-4 items-end">
             <label className="flex flex-col gap-1 text-sm">
               Tipo
               <select value={filter} onChange={(e) => setFilter(e.target.value as never)} className="border border-[#6d7f75] rounded-lg p-2">
@@ -32,6 +52,24 @@ export default function HistoryPage() {
                 <option value="BUY">Compra</option>
                 <option value="SELL">Venda</option>
               </select>
+            </label>
+            <label className="flex flex-col gap-1 text-sm">
+              De
+              <input
+                type="date"
+                value={from}
+                onChange={(e) => setFrom(e.target.value)}
+                className="border border-[#6d7f75] rounded-lg p-2"
+              />
+            </label>
+            <label className="flex flex-col gap-1 text-sm">
+              Até
+              <input
+                type="date"
+                value={to}
+                onChange={(e) => setTo(e.target.value)}
+                className="border border-[#6d7f75] rounded-lg p-2"
+              />
             </label>
             <span className="text-xs text-[#4a5a52]">{filtered.length} registros</span>
           </div>

@@ -47,6 +47,10 @@ public class SecurityConfig {
                         .requestMatchers("/error").permitAll()
                         // ADMIN: total para gerenciar empresas/ações/eventos e usuários
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        // Relatórios administrativos
+                        .requestMatchers("/api/reports/admin/**").hasRole("ADMIN")
+                        // Relatórios do jogador
+                        .requestMatchers("/api/reports/**").authenticated()
                         // USER: precisa estar autenticado para mercado/trading/carteira/ranking
                         .requestMatchers("/api/stocks/**", "/api/trades/**", "/api/portfolio/**", "/api/ranking/**").authenticated()
                         // Qualquer outra rota autenticada por padrão

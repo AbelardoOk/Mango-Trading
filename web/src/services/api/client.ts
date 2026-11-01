@@ -70,6 +70,41 @@ export async function apiFetch<T>(path: string, opts: FetchOptions = {}): Promis
   return data as T;
 }
 
+export interface DownloadedFile {
+  blob: Blob;
+  filename: string;
+}
+
+export async function apiDownload(path: string): Promise<DownloadedFile> {
+  const url = `${API_URL}${path}`;
+  const headers: Record<string, string> = {};
+  const token = getToken();
+  if (token) headers["Authorization"] = `Bearer ${token}`;
+
+  const res = await fetch(url, { headers, cache: "no-store" });
+
+  if (!res.ok) {
+    const text = await res.text();
+    if (res.status === 401 && typeof window !== "undefined") {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+    }
+    let message = text || `Erro ${res.status}`;
+    try {
+      const data = JSON.parse(text) as ErrorEnvelope;
+      message = data.message || message;
+    } catch {}
+    throw new ApiError({ status: res.status, message });
+  }
+
+  const disposition = res.headers.get("Content-Disposition") || "";
+  const utf8Match = disposition.match(/filename\*=UTF-8''([^;]+)/i);
+  const plainMatch = disposition.match(/filename="?([^";]+)"?/i);
+  const filename = decodeURIComponent(utf8Match?.[1] || plainMatch?.[1] || "relatorio");
+
+  return { blob: await res.blob(), filename };
+}
+
 // Convenience for handling 401 redirect in components
 export function handleUnauthorizedRedirect() {
   if (typeof window !== "undefined") {

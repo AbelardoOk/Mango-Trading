@@ -51,18 +51,23 @@ Polling kept as **fallback** on `onerror` (5s) and for `portfolio` (5s, user-spe
 |---|---|---|---|
 | `GET` | `/api/stream/stocks?token=` | `?token` Bearer | `text/event-stream` `event: stocks` `data: [StockResponse]` |
 | `GET` | `/api/stream/events?token=` | `?token` | `event: events` `data: [MarketEventResponse]` with `status, secondsToStart, nextRunAt` |
+| `GET` | `/api/stream/portfolio?token=` | `?token` Bearer | `event: portfolio` `data: PortfolioLiveResponse {portfolio,point}` |
+| `GET` | `/api/stocks/{id}/history?range=` | Bearer | `[PricePointResponse]` (initial chart series) |
+| `GET` | `/api/portfolio/history?range=` | Bearer | `[PortfolioHistoryPointResponse]` (reconstructed + snapshots) |
 
 Existing `GET /api/stocks`, `GET /api/events` remain for fallback and initial load. New `MarketEvent` fields (`nextRunAt`, `status`, `secondsToStart`) already in `openapi.yaml`.
 
 ## 11.4 Frontend Behavior
 
 - **Market:** `stocks` via SSE (<100ms price change), `events` via SSE (UPCOMING 3min before + ACTIVE). `now` state 1s tick for `faltam X horas e Y minutos para acabar o evento` (endDate - now).
-- **Wallet/Dashboard:** `portfolio` polling 5s (`getPortfolio` + `getRanking`) — cheap, user-specific, not broadcast (would need per-user SSE). When `stocks` SSE fires, `portfolio` will update within 5s.
+- **Stock detail:** initial series from `GET /api/stocks/{id}/history`; live points appended from `stocks` SSE (`useStockHistory`).
+- **Wallet/Dashboard:** `portfolio` via per-user SSE (`/api/stream/portfolio`) with 5s polling fallback; patrimony series from `GET /api/portfolio/history` plus live `point` from SSE (`usePortfolioHistory`).
+- **Charts:** Recharts `AreaChart`; animations disabled for live updates; textual fallback (`details` table + `aria-label`).
 - **Admin:** `admin/stocks` list still fetch (admin needs not realtime), but `admin/events` list could also use SSE in future.
 
 ## 11.5 Env & Config
 
-`application.properties:22` `events.scheduler.*`, `docker-compose.yaml:36` `EVENTS_*`, `.env.example:31` — no new env for SSE (uses same `NEXT_PUBLIC_API_URL`).
+`application.properties:22` `events.scheduler.*`, `docker-compose.yaml:36` `EVENTS_*`, `.env.example:31` — no new env for SSE (uses same `NEXT_PUBLIC_API_URL`). Portfolio snapshots: `PORTFOLIO_SNAPSHOT_ENABLED`, `PORTFOLIO_SNAPSHOT_DELAY_MS`, `PORTFOLIO_SNAPSHOT_RETENTION_DAYS`, `PORTFOLIO_SNAPSHOT_CLEANUP_CRON`.
 
 ## 11.6 Failure & Fallback
 
@@ -81,7 +86,14 @@ curl -X POST http://localhost:8080/api/admin/events/3/trigger -H "Authorization:
 docker compose logs server | grep EventScheduler # deltaSum logs
 ```
 
-## 11.8 Future
+## 11.8 Portfolio History & Snapshots
 
-- Per-user `GET /api/stream/portfolio?token=` (requires userId from token → portfolio).
+- `PortfolioSnapshot` (`user_id, captured_at` index) stores `balance`, `stockValue`, `patrimony`.
+- Captured after buy/sell (`TradeExecutedEvent` → `PortfolioSnapshotListener`, `AFTER_COMMIT`), by `PortfolioSnapshotScheduler` (60s), and on SSE connect.
+- `PortfolioHistoryService` reconstructs the past from `Transaction` + `StockPriceHistory` (starting balance derived from current balance and net cash flow) and merges authoritative snapshots by bucket.
+- Retention: `portfolio.snapshot.retention-days` (default 90) cleaned daily.
+
+## 11.9 Future
+
 - WebSocket for bidirectional (not needed, SSE sufficient for price push, POST for buy/sell).
+- Real-time chart streaming at tick level (current granularity follows scheduler/event ticks).

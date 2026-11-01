@@ -6,6 +6,7 @@ import { getRanking } from "@/services/api/ranking";
 import { RankingResponse } from "@/types/api";
 import { formatMoney } from "@/lib/money";
 import { useAuth } from "@/hooks/useAuth";
+import { ExportMenu } from "@/components/ExportMenu";
 
 export default function RankingPage() {
   const [rows, setRows] = useState<RankingResponse[]>([]);
@@ -21,9 +22,12 @@ export default function RankingPage() {
     <AuthGuard>
       <Shell>
         <div className="flex flex-col gap-4">
-          <div>
-            <h1 className="text-2xl font-bold">Ranking de jogadores</h1>
-            <p className="text-sm text-[#4a5a52]">Classificação pelo patrimônio total.</p>
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+            <div>
+              <h1 className="text-2xl font-bold">Ranking de jogadores</h1>
+              <p className="text-sm text-[#4a5a52]">Classificação pelo patrimônio total.</p>
+            </div>
+            <ExportMenu kind="ranking" label="Exportar ranking" />
           </div>
           {me && (
             <div className="bg-[#172e27] text-white rounded-xl p-6 flex justify-between items-center">

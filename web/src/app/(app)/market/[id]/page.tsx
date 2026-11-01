@@ -11,12 +11,15 @@ import { formatMoney } from "@/lib/money";
 import { ApiErrorAlert } from "@/components/ApiError";
 import { ApiError } from "@/types/api";
 import { GrowthTag } from "@/components/GrowthTag";
+import { useStockStream } from "@/hooks/useStockStream";
+import { useStockHistory } from "@/hooks/useStockHistory";
+import { PriceChart } from "@/components/charts/PriceChart";
 
 export default function TradePage() {
   const params = useParams<{ id: string }>();
   const router = useRouter();
   const id = Number(params.id);
-  const [stock, setStock] = useState<StockResponse | null>(null);
+  const [fetchedStock, setFetchedStock] = useState<StockResponse | null>(null);
   const [balance, setBalance] = useState<number>(0);
   const [owned, setOwned] = useState<number>(0);
   const [average, setAverage] = useState<number | null>(null);
@@ -24,9 +27,14 @@ export default function TradePage() {
   const [tab, setTab] = useState<"buy" | "sell">("buy");
   const [error, setError] = useState<unknown>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [range, setRange] = useState("1D");
+  const { stocks, connected } = useStockStream();
+  const liveStock = stocks.find((s) => s.id === id) ?? null;
+  const stock = liveStock ?? fetchedStock;
+  const { points, loading } = useStockHistory(id, range, stock?.currentPrice);
 
   useEffect(() => {
-    getStock(id).then(setStock).catch(setError);
+    getStock(id).then(setFetchedStock).catch(setError);
     getPortfolio()
       .then((p) => {
         setBalance(p.balance);
@@ -86,6 +94,14 @@ export default function TradePage() {
               <div className="text-3xl font-bold">{formatMoney(stock.currentPrice)}</div>
               <GrowthTag current={stock.currentPrice} average={average} previousPrice={stock.previousPrice} />
             </div>
+            <PriceChart
+              points={points}
+              loading={loading}
+              range={range}
+              onRangeChange={setRange}
+              connected={connected}
+              symbol={stock.symbol}
+            />
             <p className="text-sm text-[#4a5a52]">{stock.description}</p>
             <hr />
             <p className="text-sm">Na carteira: <strong>{owned} ações</strong> {average != null && <span className="text-xs text-[#4a5a52]">· média {formatMoney(average)}</span>}</p>

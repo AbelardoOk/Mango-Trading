@@ -175,6 +175,23 @@ components:
         balance: { type: number, format: double }
         stockValue: { type: number, format: double }
         totalPatrimony: { type: number, format: double }
+    PricePointResponse:
+      type: object
+      properties:
+        timestamp: { type: string, format: date-time }
+        price: { type: number, format: double }
+    PortfolioHistoryPointResponse:
+      type: object
+      properties:
+        timestamp: { type: string, format: date-time }
+        patrimony: { type: number, format: double }
+        balance: { type: number, format: double }
+        stockValue: { type: number, format: double }
+    PortfolioLiveResponse:
+      type: object
+      properties:
+        portfolio: { $ref: '#/components/schemas/PortfolioResponse' }
+        point: { $ref: '#/components/schemas/PortfolioHistoryPointResponse' }
     ErrorEnvelope:
       type: object
       properties:
@@ -263,6 +280,30 @@ paths:
               schema: { $ref: '#/components/schemas/StockResponse' }
         '404': { description: Not found }
         '401': { description: Unauthorized }
+  /api/stocks/{id}/history:
+    get:
+      summary: Stock price history
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer, format: int64 }
+        - name: range
+          in: query
+          required: false
+          schema: { type: string, enum: [1H, 1D, 7D, 30D], default: 1D }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/PricePointResponse' }
+        '400': { description: Invalid range }
+        '404': { description: Not found }
+        '401': { description: Unauthorized }
   /api/events:
     get:
       summary: List market events (UPCOMING/ACTIVE, 3min visibility)
@@ -344,6 +385,25 @@ paths:
               schema: { $ref: '#/components/schemas/PortfolioResponse' }
         '404': { description: Not found }
         '401': { description: Unauthorized }
+  /api/portfolio/history:
+    get:
+      summary: Portfolio patrimony history
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - name: range
+          in: query
+          required: false
+          schema: { type: string, enum: [1H, 1D, 7D, 30D], default: 7D }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/PortfolioHistoryPointResponse' }
+        '400': { description: Invalid range }
+        '401': { description: Unauthorized }
   /api/ranking:
     get:
       summary: Ranking
@@ -355,6 +415,79 @@ paths:
             application/json:
               schema: { type: array, items: { $ref: '#/components/schemas/RankingResponse' } }
         '401': { description: Unauthorized }
+  /api/reports/trades:
+    get:
+      summary: Export transaction history (CSV or PDF)
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: format, in: query, required: false, schema: { type: string, enum: [csv, pdf], default: csv } }
+        - { name: from, in: query, required: false, schema: { type: string, format: date } }
+        - { name: to, in: query, required: false, schema: { type: string, format: date } }
+        - { name: type, in: query, required: false, schema: { type: string, enum: [BUY, SELL] } }
+      responses:
+        '200':
+          description: Report file
+          content:
+            text/csv: { schema: { type: string, format: binary } }
+            application/pdf: { schema: { type: string, format: binary } }
+        '400': { description: Invalid format or type }
+        '401': { description: Unauthorized }
+  /api/reports/portfolio:
+    get:
+      summary: Export portfolio report (CSV or PDF)
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: format, in: query, required: false, schema: { type: string, enum: [csv, pdf], default: csv } }
+      responses:
+        '200':
+          description: Report file
+          content:
+            text/csv: { schema: { type: string, format: binary } }
+            application/pdf: { schema: { type: string, format: binary } }
+        '400': { description: Invalid format }
+        '401': { description: Unauthorized }
+  /api/reports/ranking:
+    get:
+      summary: Export ranking report (CSV or PDF)
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: format, in: query, required: false, schema: { type: string, enum: [csv, pdf], default: csv } }
+      responses:
+        '200':
+          description: Report file
+          content:
+            text/csv: { schema: { type: string, format: binary } }
+            application/pdf: { schema: { type: string, format: binary } }
+        '400': { description: Invalid format }
+        '401': { description: Unauthorized }
+  /api/reports/admin/stocks:
+    get:
+      summary: Export stock catalog (admin, CSV or PDF)
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: format, in: query, required: false, schema: { type: string, enum: [csv, pdf], default: csv } }
+      responses:
+        '200':
+          description: Report file
+          content:
+            text/csv: { schema: { type: string, format: binary } }
+            application/pdf: { schema: { type: string, format: binary } }
+        '401': { description: Unauthorized }
+        '403': { description: Forbidden }
+  /api/reports/admin/users:
+    get:
+      summary: Export user list (admin, CSV or PDF)
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: format, in: query, required: false, schema: { type: string, enum: [csv, pdf], default: csv } }
+      responses:
+        '200':
+          description: Report file
+          content:
+            text/csv: { schema: { type: string, format: binary } }
+            application/pdf: { schema: { type: string, format: binary } }
+        '401': { description: Unauthorized }
+        '403': { description: Forbidden }
   /api/admin/stocks:
     get:
       summary: Admin list stocks
@@ -548,4 +681,16 @@ paths:
           content:
             text/event-stream:
               schema: { type: string }
+        '401': { description: Unauthorized }
+  /api/stream/portfolio:
+    get:
+      summary: SSE per-user portfolio stream (real-time patrimony)
+      parameters:
+        - { name: token, in: query, required: true, schema: { type: string }, description: "JWT via ?token= (EventSource cannot send Authorization header)" }
+      responses:
+        '200':
+          description: text/event-stream with event portfolio
+          content:
+            text/event-stream:
+              schema: { type: string, example: "event: portfolio\ndata: {\"portfolio\":{},\"point\":{}}\n\n" }
         '401': { description: Unauthorized }

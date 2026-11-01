@@ -1,9 +1,12 @@
 package com.mangotrading.mangotrading.controller;
 
 import com.mangotrading.mangotrading.dto.response.MarketEventResponse;
+import com.mangotrading.mangotrading.dto.response.PortfolioLiveResponse;
 import com.mangotrading.mangotrading.dto.response.StockResponse;
+import com.mangotrading.mangotrading.repository.UserRepository;
 import com.mangotrading.mangotrading.security.JwtTokenProvider;
 import com.mangotrading.mangotrading.service.MarketEventService;
+import com.mangotrading.mangotrading.service.PortfolioHistoryService;
 import com.mangotrading.mangotrading.service.SseService;
 import com.mangotrading.mangotrading.service.StockService;
 import tools.jackson.databind.ObjectMapper;
@@ -26,6 +29,8 @@ public class StreamController {
     private final JwtTokenProvider tokenProvider;
     private final StockService stockService;
     private final MarketEventService marketEventService;
+    private final PortfolioHistoryService portfolioHistoryService;
+    private final UserRepository userRepository;
     private final ObjectMapper objectMapper;
 
     private boolean isValid(String token) {
@@ -62,6 +67,30 @@ public class StreamController {
         try {
             List<MarketEventResponse> events = marketEventService.findVisibleForPlayer();
             emitter.send(SseEmitter.event().name("events").data(objectMapper.writeValueAsString(events)));
+        } catch (Exception ignored) {}
+        return emitter;
+    }
+
+    @GetMapping(value = "/portfolio", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public SseEmitter portfolio(@RequestParam(required = false) String token) {
+        Long userId = null;
+        if (isValid(token)) {
+            userId = userRepository.findByEmail(tokenProvider.getEmailFromToken(token))
+                    .map(user -> user.getId())
+                    .orElse(null);
+        }
+        if (userId == null) {
+            SseEmitter emitter = new SseEmitter(0L);
+            try { emitter.send(SseEmitter.event().name("error").data("Unauthorized")); } catch (Exception ignored) {}
+            emitter.complete();
+            return emitter;
+        }
+
+        Long resolvedUserId = userId;
+        SseEmitter emitter = sseService.subscribePortfolio(resolvedUserId);
+        try {
+            PortfolioLiveResponse live = portfolioHistoryService.captureSnapshot(resolvedUserId);
+            emitter.send(SseEmitter.event().name("portfolio").data(objectMapper.writeValueAsString(live)));
         } catch (Exception ignored) {}
         return emitter;
     }

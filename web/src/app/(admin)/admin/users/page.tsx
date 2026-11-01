@@ -5,6 +5,7 @@ import { Shell } from "@/components/Shell";
 import { adminListUsers, adminGetUser } from "@/services/api/admin";
 import { UserResponse } from "@/types/api";
 import { ApiErrorAlert } from "@/components/ApiError";
+import { ExportMenu } from "@/components/ExportMenu";
 
 export default function AdminUsersPage() {
   const [users, setUsers] = useState<UserResponse[]>([]);
@@ -15,8 +16,13 @@ export default function AdminUsersPage() {
     <AuthGuard requireAdmin>
       <Shell>
         <div className="flex flex-col gap-4">
-          <h1 className="text-2xl font-bold">Usuários cadastrados</h1>
-          <p className="text-sm text-[#4a5a52]">Consulte os perfis e papéis de acesso. Toque na linha para ver detalhes.</p>
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+            <div>
+              <h1 className="text-2xl font-bold">Usuários cadastrados</h1>
+              <p className="text-sm text-[#4a5a52]">Consulte os perfis e papéis de acesso. Toque na linha para ver detalhes.</p>
+            </div>
+            <ExportMenu kind="admin/users" label="Exportar usuários" />
+          </div>
           <ApiErrorAlert error={error} onClose={() => setError(null)} />
           <div className="bg-white rounded-xl border overflow-x-auto">
             <table className="w-full text-sm">

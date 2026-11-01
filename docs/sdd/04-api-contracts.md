@@ -36,7 +36,14 @@
 | Method | Path | Response | Codes |
 |---|---|---|---|
 | `GET` | `/api/portfolio` | `200 PortfolioResponse {portfolioId,userId,userName,balance,items[],totalInvested,totalCurrentValue,totalPatrimony,totalProfitLoss}` + `PortfolioItemResponse {stockId,symbol,name,sector,currentPrice,quantity,averagePrice,totalInvested,currentValue,profitLoss,profitLossPercent}` | `404,401` |
+| `GET` | `/api/portfolio/history?range=1H\|1D\|7D\|30D` | `200 [PortfolioHistoryPointResponse {timestamp,patrimony,balance,stockValue}]` | `400,401` |
 | `GET` | `/api/ranking` | `200 [RankingResponse {position,userId,userName,balance,stockValue,totalPatrimony}] DESC` | `401` |
+
+### Charts — Authenticated
+| Method | Path | Response | Codes |
+|---|---|---|---|
+| `GET` | `/api/stocks/{id}/history?range=1H\|1D\|7D\|30D` | `200 [PricePointResponse {timestamp,price}]` | `400,404,401` |
+| `GET` | `/api/stream/portfolio?token=` | `text/event-stream` `event: portfolio` `data: PortfolioLiveResponse {portfolio,point}` | `401` |
 
 ### Admin — `ROLE_ADMIN` only
 | Method | Path | Request | Response | Codes |
@@ -54,7 +61,18 @@
 | `GET` | `/api/admin/users` | — | `200 [UserResponse]` | `401,403` |
 | `GET` | `/api/admin/users/{id}` | — | `200` | `404` |
 
-Total `22` endpoints (grep `controller/*.java` 25 lines including `/register`+`/login`).
+### Reports — Authenticated (`admin/*` requires `ROLE_ADMIN`)
+| Method | Path | Response | Codes |
+|---|---|---|---|
+| `GET` | `/api/reports/trades?format=csv\|pdf&from&to&type=BUY\|SELL` | file `text/csv` or `application/pdf` | `400,401` |
+| `GET` | `/api/reports/portfolio?format=csv\|pdf` | file | `400,401` |
+| `GET` | `/api/reports/ranking?format=csv\|pdf` | file | `400,401` |
+| `GET` | `/api/reports/admin/stocks?format=csv\|pdf` | file | `400,401,403` |
+| `GET` | `/api/reports/admin/users?format=csv\|pdf` | file | `400,401,403` |
+
+Reports return `Content-Disposition: attachment; filename="mango-*.csv|pdf"` and `Cache-Control: no-store`. CSV uses UTF-8 BOM + `;` separator and neutralizes formula injection.
+
+Total `30` endpoints (22 baseline + stock/portfolio history, portfolio SSE, 5 reports).
 
 ## 4.3 DTO Schemas
 
