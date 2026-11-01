@@ -29,6 +29,8 @@ services:
       - /app/.next
     environment:
       NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8080}
+      NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      NEXT_PUBLIC_TIKTOK_CLIENT_KEY: ${TIKTOK_CLIENT_KEY:-}
       NEXT_TELEMETRY_DISABLED: 1
     # bun dev hot-reload + Tailwind watch
     # web talks to server via localhost:8080 (browser) — no internal http://server:8080

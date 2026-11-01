@@ -1,0 +1,82 @@
+# Trecho para mesclar em docs/sdd/openapi.yaml (em `paths:` e em `components.schemas:`).
+# Ajuste a tag e os nomes de schema (JwtResponse, ErrorEnvelope) se forem diferentes no arquivo atual.
+
+paths:
+  /api/auth/google:
+    post:
+      tags: [Auth]
+      summary: Login com Google
+      description: >
+        Recebe o ID token do Google Identity Services, valida no servidor e devolve o mesmo JwtResponse do login normal.
+        Se o e-mail verificado do Google já estiver cadastrado, a conta existente é vinculada ao Google.
+        Caso contrário, cria um usuário (ROLE_USER, saldo inicial 10000.00) e a carteira.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleLoginRequest'
+      responses:
+        '200':
+          description: Login realizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JwtResponse'
+        '400':
+          description: Token inválido ou e-mail do Google não verificado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+
+  /api/auth/tiktok:
+    post:
+      tags: [Auth]
+      summary: Login com TikTok
+      description: >
+        Recebe o código de autorização do TikTok Login Kit (web) e a redirectUri usada na autorização.
+        O servidor troca o código por token, identifica o usuário pelo open_id e devolve o JwtResponse.
+        O TikTok não informa e-mail: contas criadas por aqui recebem um e-mail interno (tiktok_<open_id>@tiktok.mango.local)
+        e não são vinculadas a contas existentes.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TiktokLoginRequest'
+      responses:
+        '200':
+          description: Login realizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JwtResponse'
+        '400':
+          description: Código inválido ou falha na autenticação com o TikTok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+
+components:
+  schemas:
+    GoogleLoginRequest:
+      type: object
+      required: [idToken]
+      properties:
+        idToken:
+          type: string
+          description: ID token (credential) retornado pelo Google Identity Services
+    TiktokLoginRequest:
+      type: object
+      required: [code, redirectUri]
+      properties:
+        code:
+          type: string
+          description: Código de autorização recebido no redirect do TikTok
+        redirectUri:
+          type: string
+          description: Mesma redirect URI usada na autorização (registrada no app do TikTok)

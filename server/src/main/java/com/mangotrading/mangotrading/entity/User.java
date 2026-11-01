@@ -49,6 +49,12 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(name = "google_id", unique = true)
+    private String googleId;
+
+    @Column(name = "tiktok_id", unique = true)
+    private String tiktokId;
+
     @NotNull
     @Column(nullable = false, precision = 19, scale = 4)
     @Builder.Default
