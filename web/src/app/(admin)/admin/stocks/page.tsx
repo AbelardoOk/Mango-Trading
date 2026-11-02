@@ -1,8 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { AuthGuard } from "@/components/AuthGuard";
-import { Shell } from "@/components/Shell";
 import { adminListStocks, adminDeleteStock, adminUpdateStock } from "@/services/api/admin";
 import { StockResponse } from "@/types/api";
 import { formatMoney } from "@/lib/money";
@@ -59,8 +57,7 @@ export default function AdminStocksPage() {
   }, [stocks, q, statusFilter]);
 
   return (
-    <AuthGuard requireAdmin>
-      <Shell>
+    <>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col md:flex-row justify-between gap-4">
             <div>
@@ -123,7 +120,6 @@ export default function AdminStocksPage() {
             </div>
           </div>
         )}
-      </Shell>
-    </AuthGuard>
+    </>
   );
 }

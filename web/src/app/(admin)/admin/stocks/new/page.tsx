@@ -1,8 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { AuthGuard } from "@/components/AuthGuard";
-import { Shell } from "@/components/Shell";
 import { adminCreateStock } from "@/services/api/admin";
 import { ApiErrorAlert } from "@/components/ApiError";
 import { ApiError } from "@/types/api";
@@ -39,8 +37,7 @@ export default function AdminStockNewPage() {
   }
 
   return (
-    <AuthGuard requireAdmin>
-      <Shell>
+    <>
         <div className="max-w-2xl flex flex-col gap-4">
           <h1 className="text-2xl font-bold">Cadastrar ação</h1>
           <p className="text-sm text-[#4a5a52]">Ações e empresas / Novo cadastro</p>
@@ -84,7 +81,6 @@ export default function AdminStockNewPage() {
             </div>
           </form>
         </div>
-      </Shell>
-    </AuthGuard>
+    </>
   );
 }

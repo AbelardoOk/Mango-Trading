@@ -1,188 +1,247 @@
 "use client";
+
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { AuthGuard } from "@/components/AuthGuard";
-import { Shell } from "@/components/Shell";
-import { apiFetch } from "@/services/api/client";
-import { adminUpdateEvent } from "@/services/api/admin";
-import { MarketEventResponse } from "@/types/api";
+import { ArrowLeft } from "lucide-react";
+import { adminGetEvent, adminUpdateEvent } from "@/services/api/admin";
+import { MarketEventRequest } from "@/types/api";
 import { ApiErrorAlert } from "@/components/ApiError";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Field, Input, Select, Textarea } from "@/components/ui/Input";
+import { PageHeader } from "@/components/ui/PageHeader";
+import { PageSkeleton } from "@/components/ui/Skeleton";
+
+type FormState = {
+  title: string;
+  description: string;
+  impact: "LOW" | "MEDIUM" | "HIGH";
+  priceDeltaPercent: string;
+  direction: "POSITIVE" | "NEGATIVE" | "RANDOM";
+  scope: "ALL" | "SECTOR";
+  sector: string;
+  recurrenceType: "NONE" | "DAILY" | "RANDOM";
+  dailyTime: string;
+  randomMin: string;
+  randomMax: string;
+  durationMinutes: number;
+  enabled: boolean;
+  visibilityMinutes: number;
+  startDate: string;
+  endDate: string;
+};
 
 function toLocalInput(iso?: string) {
   if (!iso) return "";
-  const d = new Date(iso);
-  const pad = (n: number) => String(n).padStart(2, "0");
-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  const date = new Date(iso);
+  const pad = (value: number) => String(value).padStart(2, "0");
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
 }
-function minutesToText(m?: number) {
-  if (m == null) return "";
-  if (m % 60 === 0) return `${m / 60}h`;
-  return `${m}m`;
+
+function minutesToText(minutes?: number) {
+  if (minutes == null) return "";
+  if (minutes % 60 === 0) return `${minutes / 60}h`;
+  return `${minutes}m`;
 }
+
+const emptyForm: FormState = {
+  title: "",
+  description: "",
+  impact: "LOW",
+  priceDeltaPercent: "",
+  direction: "RANDOM",
+  scope: "ALL",
+  sector: "",
+  recurrenceType: "NONE",
+  dailyTime: "09:00",
+  randomMin: "30m",
+  randomMax: "2h",
+  durationMinutes: 60,
+  enabled: true,
+  visibilityMinutes: 3,
+  startDate: "",
+  endDate: "",
+};
 
 export default function AdminEventEditPage() {
   const params = useParams<{ id: string }>();
   const id = Number(params.id);
   const router = useRouter();
-  const [form, setForm] = useState({
-    title: "",
-    description: "",
-    impact: "LOW" as "LOW" | "MEDIUM" | "HIGH",
-    priceDeltaPercent: "",
-    direction: "RANDOM" as "POSITIVE" | "NEGATIVE" | "RANDOM",
-    scope: "ALL" as "ALL" | "SECTOR",
-    sector: "",
-    recurrenceType: "NONE" as "NONE" | "DAILY" | "RANDOM",
-    dailyTime: "09:00",
-    randomMin: "30m",
-    randomMax: "2h",
-    durationMinutes: 60,
-    enabled: true,
-    visibilityMinutes: 3,
-    startDate: "",
-    endDate: "",
-  });
+  const [form, setForm] = useState<FormState>(emptyForm);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
   const [error, setError] = useState<unknown>(null);
 
   useEffect(() => {
-    apiFetch<MarketEventResponse>(`/api/admin/events/${id}`).then((e) => {
-      setForm({
-        title: e.title,
-        description: e.description || "",
-        impact: e.impact,
-        priceDeltaPercent: e.priceDeltaPercent != null ? String(e.priceDeltaPercent) : "",
-        direction: (e.direction as never) || "RANDOM",
-        scope: (e.scope as never) || "ALL",
-        sector: e.sector || "",
-        recurrenceType: (e.recurrenceType as never) || "NONE",
-        dailyTime: e.dailyTime || "09:00",
-        randomMin: e.randomMinMinutes != null ? minutesToText(e.randomMinMinutes) : "30m",
-        randomMax: e.randomMaxMinutes != null ? minutesToText(e.randomMaxMinutes) : "2h",
-        durationMinutes: e.durationMinutes ?? 60,
-        enabled: e.enabled ?? true,
-        visibilityMinutes: e.visibilityMinutes ?? 3,
-        startDate: toLocalInput(e.startDate),
-        endDate: toLocalInput(e.endDate),
-      });
-    }).catch(setError);
+    adminGetEvent(id)
+      .then((event) => {
+        setForm({
+          title: event.title,
+          description: event.description ?? "",
+          impact: event.impact,
+          priceDeltaPercent: event.priceDeltaPercent != null ? String(event.priceDeltaPercent) : "",
+          direction: event.direction ?? "RANDOM",
+          scope: event.scope ?? "ALL",
+          sector: event.sector ?? "",
+          recurrenceType: event.recurrenceType ?? "NONE",
+          dailyTime: event.dailyTime ?? "09:00",
+          randomMin: minutesToText(event.randomMinMinutes) || "30m",
+          randomMax: minutesToText(event.randomMaxMinutes) || "2h",
+          durationMinutes: event.durationMinutes ?? 60,
+          enabled: event.enabled ?? true,
+          visibilityMinutes: event.visibilityMinutes ?? 3,
+          startDate: toLocalInput(event.startDate),
+          endDate: toLocalInput(event.endDate),
+        });
+      })
+      .catch(setError)
+      .finally(() => setLoading(false));
   }, [id]);
 
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
+  async function submit(event: React.FormEvent) {
+    event.preventDefault();
+    setSaving(true);
     setError(null);
+    const payload: MarketEventRequest = {
+      title: form.title,
+      description: form.description,
+      impact: form.impact,
+      priceDeltaPercent: form.priceDeltaPercent ? Number(form.priceDeltaPercent) : undefined,
+      direction: form.direction,
+      scope: form.scope,
+      sector: form.scope === "SECTOR" ? form.sector : undefined,
+      recurrenceType: form.recurrenceType,
+      dailyTime: form.recurrenceType === "DAILY" ? form.dailyTime : undefined,
+      randomMin: form.recurrenceType === "RANDOM" ? form.randomMin : undefined,
+      randomMax: form.recurrenceType === "RANDOM" ? form.randomMax : undefined,
+      durationMinutes: form.durationMinutes,
+      enabled: form.enabled,
+      visibilityMinutes: form.visibilityMinutes,
+      startDate: form.recurrenceType === "NONE" && form.startDate ? new Date(form.startDate).toISOString() : undefined,
+      endDate: form.recurrenceType === "NONE" && form.endDate ? new Date(form.endDate).toISOString() : undefined,
+    };
     try {
-      await adminUpdateEvent(id, {
-        title: form.title,
-        description: form.description,
-        impact: form.impact,
-        priceDeltaPercent: form.priceDeltaPercent ? Number(form.priceDeltaPercent) : undefined,
-        direction: form.direction,
-        scope: form.scope,
-        sector: form.scope === "SECTOR" ? form.sector : undefined,
-        recurrenceType: form.recurrenceType,
-        dailyTime: form.recurrenceType === "DAILY" ? form.dailyTime : undefined,
-        randomMin: form.recurrenceType === "RANDOM" ? form.randomMin : undefined,
-        randomMax: form.recurrenceType === "RANDOM" ? form.randomMax : undefined,
-        durationMinutes: form.durationMinutes,
-        enabled: form.enabled,
-        visibilityMinutes: form.visibilityMinutes,
-        startDate: form.recurrenceType === "NONE" && form.startDate ? new Date(form.startDate).toISOString() : undefined,
-        endDate: form.recurrenceType === "NONE" && form.endDate ? new Date(form.endDate).toISOString() : undefined,
-      });
+      await adminUpdateEvent(id, payload);
       router.push("/admin/events");
-    } catch (err) { setError(err); }
+    } catch (err) {
+      setError(err);
+    } finally {
+      setSaving(false);
+    }
   }
 
+  if (loading) return <PageSkeleton />;
+
   return (
-    <AuthGuard requireAdmin>
-      <Shell>
-        <div className="max-w-2xl flex flex-col gap-4">
-          <h1 className="text-2xl font-bold">Editar evento</h1>
-          <p className="text-sm text-[#4a5a52]">Eventos de mercado / Edição • Recorrência diária ou aleatória 30m/2h</p>
-          <ApiErrorAlert error={error} onClose={() => setError(null)} />
-          <form onSubmit={submit} className="bg-white rounded-xl border p-6 flex flex-col gap-4" noValidate>
-            <label className="flex flex-col gap-1 text-sm font-semibold">Título *
-              <input value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} required className="border border-[#6d7f75] rounded-lg p-3 w-full" />
+    <>
+      <Link href="/admin/events" className="inline-flex items-center gap-2 text-sm font-semibold text-muted hover:text-green">
+        <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+        Voltar para eventos
+      </Link>
+      <PageHeader
+        eyebrow="ADMINISTRAÇÃO"
+        title="Editar evento"
+        description="Ajuste impacto, recorrência e visibilidade do evento de mercado."
+      />
+      <ApiErrorAlert error={error} onClose={() => setError(null)} />
+      <Card className="max-w-3xl p-5">
+        <form onSubmit={submit} className="flex flex-col gap-4" noValidate>
+          <Field label="Título *">
+            <Input value={form.title} onChange={(event) => setForm({ ...form, title: event.target.value })} required />
+          </Field>
+          <Field label="Descrição">
+            <Textarea value={form.description} onChange={(event) => setForm({ ...form, description: event.target.value })} rows={3} />
+          </Field>
+          <div className="grid gap-4 md:grid-cols-3">
+            <Field label="Impacto *">
+              <Select value={form.impact} onChange={(event) => setForm({ ...form, impact: event.target.value as FormState["impact"] })}>
+                <option value="LOW">LOW (1%)</option>
+                <option value="MEDIUM">MEDIUM (2.5%)</option>
+                <option value="HIGH">HIGH (5%)</option>
+              </Select>
+            </Field>
+            <Field label="Delta custom %" hint="Vazio usa o impacto">
+              <Input type="number" step="0.1" value={form.priceDeltaPercent} onChange={(event) => setForm({ ...form, priceDeltaPercent: event.target.value })} placeholder="3.5" />
+            </Field>
+            <Field label="Direção *">
+              <Select value={form.direction} onChange={(event) => setForm({ ...form, direction: event.target.value as FormState["direction"] })}>
+                <option value="RANDOM">Aleatória</option>
+                <option value="POSITIVE">Positiva</option>
+                <option value="NEGATIVE">Negativa</option>
+              </Select>
+            </Field>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <Field label="Escopo *">
+              <Select value={form.scope} onChange={(event) => setForm({ ...form, scope: event.target.value as FormState["scope"] })}>
+                <option value="ALL">Todas as empresas</option>
+                <option value="SECTOR">Por setor</option>
+              </Select>
+            </Field>
+            <Field label={`Setor${form.scope === "SECTOR" ? " *" : ""}`}>
+              <Input value={form.sector} onChange={(event) => setForm({ ...form, sector: event.target.value })} disabled={form.scope !== "SECTOR"} required={form.scope === "SECTOR"} />
+            </Field>
+          </div>
+          <Field label="Recorrência *">
+            <Select value={form.recurrenceType} onChange={(event) => setForm({ ...form, recurrenceType: event.target.value as FormState["recurrenceType"] })}>
+              <option value="NONE">Única</option>
+              <option value="DAILY">Diária</option>
+              <option value="RANDOM">Aleatória</option>
+            </Select>
+          </Field>
+          {form.recurrenceType === "DAILY" ? (
+            <div className="grid gap-4 rounded-xl bg-bg p-4 md:grid-cols-2">
+              <Field label="Horário diário *">
+                <Input type="time" value={form.dailyTime} onChange={(event) => setForm({ ...form, dailyTime: event.target.value })} required />
+              </Field>
+              <Field label="Duração (min)">
+                <Input type="number" value={form.durationMinutes} onChange={(event) => setForm({ ...form, durationMinutes: Number(event.target.value) })} />
+              </Field>
+            </div>
+          ) : null}
+          {form.recurrenceType === "RANDOM" ? (
+            <div className="grid gap-4 rounded-xl bg-bg p-4 md:grid-cols-3">
+              <Field label="Mínimo *" hint="Ex.: 30m">
+                <Input value={form.randomMin} onChange={(event) => setForm({ ...form, randomMin: event.target.value })} required />
+              </Field>
+              <Field label="Máximo *" hint="Ex.: 2h">
+                <Input value={form.randomMax} onChange={(event) => setForm({ ...form, randomMax: event.target.value })} required />
+              </Field>
+              <Field label="Duração (min)">
+                <Input type="number" value={form.durationMinutes} onChange={(event) => setForm({ ...form, durationMinutes: Number(event.target.value) })} />
+              </Field>
+            </div>
+          ) : null}
+          {form.recurrenceType === "NONE" ? (
+            <div className="grid gap-4 md:grid-cols-2">
+              <Field label="Início">
+                <Input type="datetime-local" value={form.startDate} onChange={(event) => setForm({ ...form, startDate: event.target.value })} />
+              </Field>
+              <Field label="Fim">
+                <Input type="datetime-local" value={form.endDate} onChange={(event) => setForm({ ...form, endDate: event.target.value })} />
+              </Field>
+            </div>
+          ) : null}
+          <div className="grid gap-4 md:grid-cols-2">
+            <label className="flex min-h-11 items-center gap-2 text-sm font-semibold text-ink">
+              <input type="checkbox" checked={form.enabled} onChange={(event) => setForm({ ...form, enabled: event.target.checked })} className="h-4 w-4 accent-[#174f3d]" />
+              Evento ativo
             </label>
-            <label className="flex flex-col gap-1 text-sm font-semibold">Descrição
-              <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className="border border-[#6d7f75] rounded-lg p-3 w-full" rows={3} />
-            </label>
-            <div className="grid md:grid-cols-3 gap-4">
-              <label className="flex flex-col gap-1 text-sm font-semibold">Impacto *
-                <select value={form.impact} onChange={(e) => setForm({ ...form, impact: e.target.value as never })} className="border border-[#6d7f75] rounded-lg p-3 w-full">
-                  <option value="LOW">LOW (1%)</option><option value="MEDIUM">MEDIUM (2.5%)</option><option value="HIGH">HIGH (5%)</option>
-                </select>
-              </label>
-              <label className="flex flex-col gap-1 text-sm font-semibold">Delta custom %
-                <input type="number" step="0.1" value={form.priceDeltaPercent} onChange={(e) => setForm({ ...form, priceDeltaPercent: e.target.value })} placeholder="3.5" className="border border-[#6d7f75] rounded-lg p-3 w-full" />
-              </label>
-              <label className="flex flex-col gap-1 text-sm font-semibold">Direção *
-                <select value={form.direction} onChange={(e) => setForm({ ...form, direction: e.target.value as never })} className="border border-[#6d7f75] rounded-lg p-3 w-full">
-                  <option value="RANDOM">Neutro (±)</option><option value="POSITIVE">Positivo (+)</option><option value="NEGATIVE">Negativo (-)</option>
-                </select>
-              </label>
-            </div>
-            <div className="grid md:grid-cols-2 gap-4">
-              <label className="flex flex-col gap-1 text-sm font-semibold">Escopo *
-                <select value={form.scope} onChange={(e) => setForm({ ...form, scope: e.target.value as never })} className="border border-[#6d7f75] rounded-lg p-3 w-full">
-                  <option value="ALL">Todas (geral)</option><option value="SECTOR">Por setor</option>
-                </select>
-              </label>
-              <label className="flex flex-col gap-1 text-sm font-semibold">Setor
-                <input value={form.sector} onChange={(e) => setForm({ ...form, sector: e.target.value })} disabled={form.scope !== "SECTOR"} placeholder="Tecnologia" className="border border-[#6d7f75] rounded-lg p-3 w-full disabled:bg-gray-100" />
-              </label>
-            </div>
-            <label className="flex flex-col gap-1 text-sm font-semibold">Recorrência *
-              <select value={form.recurrenceType} onChange={(e) => setForm({ ...form, recurrenceType: e.target.value as never })} className="border border-[#6d7f75] rounded-lg p-3 w-full">
-                <option value="NONE">Nenhuma (único)</option><option value="DAILY">Diária (todo dia)</option><option value="RANDOM">Aleatória (min..max)</option>
-              </select>
-            </label>
-            {form.recurrenceType === "DAILY" && (
-              <div className="grid md:grid-cols-2 gap-4 bg-[#f5f7f3] p-4 rounded-lg">
-                <label className="flex flex-col gap-1 text-sm font-semibold">Horário *
-                  <input type="time" value={form.dailyTime} onChange={(e) => setForm({ ...form, dailyTime: e.target.value })} required className="border border-[#6d7f75] rounded-lg p-3 w-full" />
-                </label>
-                <label className="flex flex-col gap-1 text-sm font-semibold">Duração (min)
-                  <input type="number" value={form.durationMinutes} onChange={(e) => setForm({ ...form, durationMinutes: Number(e.target.value) })} className="border border-[#6d7f75] rounded-lg p-3 w-full" />
-                </label>
-              </div>
-            )}
-            {form.recurrenceType === "RANDOM" && (
-              <div className="grid md:grid-cols-3 gap-4 bg-[#f5f7f3] p-4 rounded-lg">
-                <label className="flex flex-col gap-1 text-sm font-semibold">Mín *
-                  <input value={form.randomMin} onChange={(e) => setForm({ ...form, randomMin: e.target.value })} required placeholder="30m" className="border border-[#6d7f75] rounded-lg p-3 w-full" />
-                </label>
-                <label className="flex flex-col gap-1 text-sm font-semibold">Máx *
-                  <input value={form.randomMax} onChange={(e) => setForm({ ...form, randomMax: e.target.value })} required placeholder="2h" className="border border-[#6d7f75] rounded-lg p-3 w-full" />
-                </label>
-                <label className="flex flex-col gap-1 text-sm font-semibold">Duração (min)
-                  <input type="number" value={form.durationMinutes} onChange={(e) => setForm({ ...form, durationMinutes: Number(e.target.value) })} className="border border-[#6d7f75] rounded-lg p-3 w-full" />
-                </label>
-              </div>
-            )}
-            {form.recurrenceType === "NONE" && (
-              <div className="grid md:grid-cols-2 gap-4">
-                <label className="flex flex-col gap-1 text-sm font-semibold">Início
-                  <input type="datetime-local" value={form.startDate} onChange={(e) => setForm({ ...form, startDate: e.target.value })} className="border border-[#6d7f75] rounded-lg p-3 w-full" />
-                </label>
-                <label className="flex flex-col gap-1 text-sm font-semibold">Fim
-                  <input type="datetime-local" value={form.endDate} onChange={(e) => setForm({ ...form, endDate: e.target.value })} className="border border-[#6d7f75] rounded-lg p-3 w-full" />
-                </label>
-              </div>
-            )}
-            <div className="grid md:grid-cols-2 gap-4">
-              <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={form.enabled} onChange={(e) => setForm({ ...form, enabled: e.target.checked })} /> Ativo</label>
-              <label className="flex flex-col gap-1 text-sm font-semibold">Visibilidade prévia (min)
-                <input type="number" value={form.visibilityMinutes} onChange={(e) => setForm({ ...form, visibilityMinutes: Number(e.target.value) })} className="border border-[#6d7f75] rounded-lg p-3 w-full" />
-              </label>
-            </div>
-            <div className="flex gap-3">
-              <button type="button" onClick={() => router.push("/admin/events")} className="flex-1 bg-[#e8f1eb] py-3 rounded-lg">Cancelar</button>
-              <button type="submit" className="flex-1 bg-[#174f3d] text-white py-3 rounded-lg">Salvar alterações</button>
-            </div>
-          </form>
-        </div>
-      </Shell>
-    </AuthGuard>
+            <Field label="Visibilidade prévia (min)">
+              <Input type="number" value={form.visibilityMinutes} onChange={(event) => setForm({ ...form, visibilityMinutes: Number(event.target.value) })} />
+            </Field>
+          </div>
+          <div className="flex gap-3">
+            <Button variant="outline" className="flex-1" onClick={() => router.push("/admin/events")}>
+              Cancelar
+            </Button>
+            <Button type="submit" className="flex-1" disabled={saving}>
+              {saving ? "Salvando..." : "Salvar alterações"}
+            </Button>
+          </div>
+        </form>
+      </Card>
+    </>
   );
 }

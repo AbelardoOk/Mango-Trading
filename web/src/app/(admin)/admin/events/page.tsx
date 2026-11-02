@@ -1,8 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { AuthGuard } from "@/components/AuthGuard";
-import { Shell } from "@/components/Shell";
 import { adminListEvents, adminDeleteEvent, adminTriggerEvent } from "@/services/api/admin";
 import { MarketEventResponse } from "@/types/api";
 import { ApiErrorAlert } from "@/components/ApiError";
@@ -40,8 +38,7 @@ export default function AdminEventsPage() {
   useEffect(() => { load(); }, []);
 
   return (
-    <AuthGuard requireAdmin>
-      <Shell>
+    <>
         <div className="flex flex-col gap-4">
           <div className="flex justify-between items-center">
             <div>
@@ -80,7 +77,6 @@ export default function AdminEventsPage() {
             {events.length === 0 && <p className="text-sm text-[#4a5a52]">Nenhum evento. Crie o primeiro — ex: quebra geral diária às 09:00 ou aleatório 30m–2h por setor.</p>}
           </div>
         </div>
-      </Shell>
-    </AuthGuard>
+    </>
   );
 }

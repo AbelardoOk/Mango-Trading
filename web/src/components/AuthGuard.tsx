@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
+import { PageSkeleton } from "@/components/ui/Skeleton";
 
 export function AuthGuard({ children, requireAdmin = false }: { children: React.ReactNode; requireAdmin?: boolean }) {
   const { isAuthenticated, isAdmin, loading } = useAuth();
@@ -19,7 +20,7 @@ export function AuthGuard({ children, requireAdmin = false }: { children: React.
     }
   }, [isAuthenticated, isAdmin, loading, router, pathname, requireAdmin]);
 
-  if (loading) return <div className="p-8 text-center text-sm text-[#4a5a52]">Carregando...</div>;
+  if (loading) return <div className="p-6 md:p-8"><PageSkeleton /></div>;
   if (!isAuthenticated) return null;
   if (requireAdmin && !isAdmin) return null;
   return <>{children}</>;

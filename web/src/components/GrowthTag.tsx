@@ -1,7 +1,7 @@
 "use client";
 import { formatMoney } from "@/lib/money";
 
-export function GrowthTag({ current, average, previousPrice, quantity = 1 }: { current: number; average?: number | null; previousPrice?: number | null; quantity?: number }) {
+export function GrowthTag({ current, average, previousPrice }: { current: number; average?: number | null; previousPrice?: number | null }) {
   const baseline = average && average !== 0 ? average : previousPrice;
   if (!baseline || baseline === 0) return null;
   const diffPerUnit = current - baseline;
@@ -9,10 +9,13 @@ export function GrowthTag({ current, average, previousPrice, quantity = 1 }: { c
   if (Math.abs(pct) <= 0.5) return null;
   const isPos = diffPerUnit >= 0;
   const absDiff = Math.abs(diffPerUnit);
-  const color = isPos ? "text-[#174f3d] bg-[#e8f1eb] border-[#174f3d]" : "text-[#ad342c] bg-[#fbece9] border-[#ad342c]";
+  const color = isPos ? "text-green bg-soft border-green/30" : "text-red bg-[#fbece9] border-red/30";
   const sign = isPos ? "+" : "-";
   return (
-    <span className={`inline-flex items-center gap-1 text-[10px] leading-none px-1.5 py-0.5 rounded-full border font-medium ${color}`} aria-label={`${pct.toFixed(2)} por cento, ${sign}${formatMoney(absDiff)} vs média`}>
+    <span
+      className={`inline-flex items-center gap-1 rounded-full border px-1.5 py-0.5 text-[10px] font-medium leading-none ${color}`}
+      aria-label={`${pct.toFixed(2)} por cento, ${sign}${formatMoney(absDiff)} ${average ? "vs preço médio" : "vs preço anterior"}`}
+    >
       <span aria-hidden>{isPos ? "↑" : "↓"}</span>
       <span>{sign}{pct.toFixed(2)}%</span>
       <span className="opacity-60">·</span>

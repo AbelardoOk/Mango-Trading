@@ -1,8 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { AuthGuard } from "@/components/AuthGuard";
-import { Shell } from "@/components/Shell";
 import { adminCreateEvent } from "@/services/api/admin";
 import { ApiErrorAlert } from "@/components/ApiError";
 
@@ -54,8 +52,7 @@ export default function AdminEventNewPage() {
   }
 
   return (
-    <AuthGuard requireAdmin>
-      <Shell>
+    <>
         <div className="max-w-2xl flex flex-col gap-4">
           <h1 className="text-2xl font-bold">Novo evento</h1>
           <p className="text-sm text-[#4a5a52]">Programação estratégica: diário (todo dia às HH:mm) ou aleatório (30m/2h) • Visível 3min antes</p>
@@ -143,7 +140,6 @@ export default function AdminEventNewPage() {
             <button type="submit" className="bg-[#174f3d] text-white py-3 rounded-lg font-semibold">Salvar evento</button>
           </form>
         </div>
-      </Shell>
-    </AuthGuard>
+    </>
   );
 }

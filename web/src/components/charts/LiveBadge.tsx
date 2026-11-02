@@ -13,7 +13,7 @@ export function LiveBadge({ connected }: { connected: boolean }) {
         }`}
         aria-hidden="true"
       />
-      {connected ? "Tempo real" : "Reconectando..."}
+      {connected ? "Tempo real" : "Atualização periódica"}
     </span>
   );
 }

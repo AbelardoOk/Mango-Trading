@@ -1,22 +1,28 @@
 "use client";
+
 import {
   Area,
   AreaChart,
   CartesianGrid,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
+import { TrendingDown, TrendingUp } from "lucide-react";
 import { PricePoint } from "@/types/api";
-import { formatMoney } from "@/lib/money";
+import { formatMoney, formatPercent } from "@/lib/money";
 import { ChartEmptyState } from "./ChartEmptyState";
 import { LiveBadge } from "./LiveBadge";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 
 const RANGES = [
   { value: "1H", label: "1H" },
   { value: "1D", label: "1D" },
   { value: "7D", label: "7D" },
+  { value: "30D", label: "30D" },
 ];
 
 type Props = {
@@ -26,6 +32,7 @@ type Props = {
   onRangeChange: (range: string) => void;
   connected?: boolean;
   symbol: string;
+  baseline?: number | null;
 };
 
 function formatAxis(value: string, range: string) {
@@ -36,39 +43,53 @@ function formatAxis(value: string, range: string) {
   return date.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
 }
 
-export function PriceChart({ points, loading, range, onRangeChange, connected = false, symbol }: Props) {
-  const data = points.map((p) => ({
-    timestamp: p.timestamp,
-    price: Number(p.price),
+export function PriceChart({ points, loading, range, onRangeChange, connected = false, symbol, baseline }: Props) {
+  const data = points.map((point) => ({
+    timestamp: point.timestamp,
+    price: Number(point.price),
   }));
   const last = data[data.length - 1];
   const first = data[0];
+  const delta = last && first ? last.price - first.price : 0;
+  const deltaPercent = first?.price ? (delta / first.price) * 100 : 0;
+  const positive = delta >= 0;
   const ariaLabel = data.length
     ? `Preço de ${symbol} de ${formatMoney(first.price)} para ${formatMoney(last.price)} em ${data.length} pontos.`
     : `Gráfico de preço de ${symbol} sem dados.`;
 
   return (
-    <section className="bg-white rounded-xl p-6 border flex flex-col gap-4" aria-labelledby="price-chart-title">
+    <Card className="flex flex-col gap-4 p-5" aria-labelledby="price-chart-title">
       <div className="flex flex-wrap justify-between items-start gap-3">
         <div>
-          <h3 id="price-chart-title" className="font-semibold">
-            Preço de {symbol}
-          </h3>
-          <p className="text-xs text-[#4a5a52]">Histórico de preços em moeda virtual (M$)</p>
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 id="price-chart-title" className="font-bold text-ink">
+              Preço de {symbol}
+            </h3>
+            {data.length > 0 ? (
+              <Badge tone={positive ? "green" : "red"}>
+                {positive ? <TrendingUp className="h-3 w-3" aria-hidden="true" /> : <TrendingDown className="h-3 w-3" aria-hidden="true" />}
+                {formatPercent(deltaPercent)}
+              </Badge>
+            ) : null}
+          </div>
+          <p className="mt-1 text-xs text-muted">
+            Histórico de preços em moeda virtual (M$) · {positive ? "+" : "−"}
+            {formatMoney(Math.abs(delta))} no período
+          </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2">
           <LiveBadge connected={connected} />
-          <div className="flex bg-[#f5f7f3] rounded-lg p-1" role="group" aria-label="Período do gráfico">
+          <div className="flex rounded-lg bg-bg p-1" role="group" aria-label="Período do gráfico">
             {RANGES.map((option) => (
               <button
                 key={option.value}
                 type="button"
                 onClick={() => onRangeChange(option.value)}
                 aria-pressed={range === option.value}
-                className={`px-3 py-1 rounded-md text-xs font-semibold ${
+                className={`min-h-8 rounded-md px-2.5 text-xs font-semibold transition-colors ${
                   range === option.value
-                    ? "bg-[#174f3d] text-white"
-                    : "text-[#4a5a52] hover:bg-[#e8f1eb]"
+                    ? "bg-green text-white"
+                    : "text-muted hover:bg-soft hover:text-ink"
                 }`}
               >
                 {option.label}
@@ -79,11 +100,11 @@ export function PriceChart({ points, loading, range, onRangeChange, connected = 
       </div>
 
       {loading ? (
-        <div className="h-44 animate-pulse rounded-lg bg-[#e8f1eb]" aria-label="Carregando gráfico" />
+        <div className="h-48 animate-pulse rounded-xl bg-soft" aria-label="Carregando gráfico" />
       ) : data.length === 0 ? (
         <ChartEmptyState message="Ainda não há histórico de preços para esta ação." />
       ) : (
-        <div className="h-44" role="img" aria-label={ariaLabel}>
+        <div className="h-48" role="img" aria-label={ariaLabel}>
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data} margin={{ top: 8, right: 8, bottom: 0, left: 0 }}>
               <defs>
@@ -111,6 +132,14 @@ export function PriceChart({ points, loading, range, onRangeChange, connected = 
                 tickLine={false}
                 domain={["auto", "auto"]}
               />
+              {baseline ? (
+                <ReferenceLine
+                  y={baseline}
+                  stroke="#6d7f75"
+                  strokeDasharray="4 4"
+                  label={{ value: "média", position: "insideTopRight", fontSize: 10, fill: "#4a5a52" }}
+                />
+              ) : null}
               <Tooltip
                 formatter={(value) => [formatMoney(Number(value)), "Preço"]}
                 labelFormatter={(label) => new Date(String(label)).toLocaleString("pt-BR")}
@@ -129,6 +158,6 @@ export function PriceChart({ points, loading, range, onRangeChange, connected = 
           </ResponsiveContainer>
         </div>
       )}
-    </section>
+    </Card>
   );
 }

@@ -1,7 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { AuthGuard } from "@/components/AuthGuard";
-import { Shell } from "@/components/Shell";
 import { adminListUsers, adminGetUser } from "@/services/api/admin";
 import { UserResponse } from "@/types/api";
 import { ApiErrorAlert } from "@/components/ApiError";
@@ -13,8 +11,7 @@ export default function AdminUsersPage() {
   const [detail, setDetail] = useState<UserResponse | null>(null);
   useEffect(() => { adminListUsers().then(setUsers).catch(setError); }, []);
   return (
-    <AuthGuard requireAdmin>
-      <Shell>
+    <>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
             <div>
@@ -48,7 +45,6 @@ export default function AdminUsersPage() {
             </div>
           </div>
         )}
-      </Shell>
-    </AuthGuard>
+    </>
   );
 }

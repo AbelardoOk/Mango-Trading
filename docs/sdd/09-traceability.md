@@ -1,6 +1,6 @@
 # 09 — Traceability Matrix
 
-> Source: ERS §3.1-3.4 + prototype LEIA-ME table + `controller/service/entity` | Status: 001 baseline + 002 planned
+> Source: ERS §3.1-3.4 + prototype LEIA-ME table + `controller/service/entity` | Status: 001 baseline + 002 planned + 003 realtime/reports + 004 player UX
 
 ## 09.1 RF → SDD → Code → Prototype Screen → Spec/Tasks
 
@@ -22,6 +22,7 @@
 | (users) | List users admin | `04 /admin/users` | `AdminUserController`, `UserService` | `17-usuarios.png` | `001 US12` | ✅ server |
 | (charts) | Real-time patrimony/price charts | `11`, `04 Charts` | `StockHistoryService`, `PortfolioHistoryService`, `SseService`, `StreamController`, `PortfolioController` | `03-visao-geral.png`, `04-mercado.png`, `08-carteira.png` | `003 US1/US2` | ✅ |
 | (reports) | CSV/PDF report export | `04 Reports` | `ReportController`, `ReportService`, `CsvReportWriter`, `PdfReportBuilder` | `03,08,09,10,11,17` | `003 US3` | ✅ |
+| (ux) | Player UX: shell, dashboard, market/trade, wallet, history, ranking, onboarding, guide | `07`, `11`, `08:8.2` | Web only: `components/ui/*`, `Shell`, `PortfolioContext`, `(app)`/`(admin)` layouts, player pages | `00`–`10`, `18`–`24` | `004 US1–US4` | ✅ |
 
 ## 09.2 RNF → SDD → Verification
 
@@ -48,7 +49,7 @@
 | 04 | Mercado | `04-mercado.png/svg` | RF05 | `/market` |
 | 05 | Compra | `05-compra.png/svg` | RF06-08 | `/market/[symbol]` buy |
 | 06 | Venda | `06-venda.png/svg` | RF07 | `/market/[symbol]` sell |
-| 07 | Compra concluída | `07-compra-concluida.png/svg` | RF06 | `/market/success` |
+| 07 | Compra concluída | `07-compra-concluida.png/svg` | RF06 | `/market/[id]` — feedback toast + inline card (sem rota `/market/success` separada) |
 | 08 | Carteira | `08-carteira.png/svg` | RF09-11 | `/wallet` |
 | 09 | Histórico | `09-historico.png/svg` | RF10 | `/history` |
 | 10 | Ranking | `10-ranking.png/svg` | RF12 | `/ranking` |
@@ -73,3 +74,23 @@ Count: `png 25, svg 26` (including `LEIA-ME.txt` in icons folder, not a screen).
 
 - Controllers grep `30` endpoints (`@*Mapping`). `openapi.yaml` declares `30` paths — parity ✅.
 - Added in `003`: `GET /api/stocks/{id}/history`, `GET /api/portfolio/history`, `GET /api/stream/portfolio`, and 5 `/api/reports/**` exports (CSV/PDF).
+
+## 09.5 Feature 004 — Player UX improvements
+
+| Item | Detail |
+|---|---|
+| Spec/Plan/Tasks | `specs/004-player-ux-improvements/{spec,plan,tasks}.md` |
+| Dependencies | `lucide-react@1.66.0` |
+| Foundation | `web/src/app/globals.css` (semantic tokens, Geist body, motion/a11y), `web/src/lib/cn.ts` |
+| UI kit | `web/src/components/ui/{Button,Card,Badge,StatCard,PageHeader,Input,Select,Textarea,Modal,Toast,Skeleton,EmptyState}.tsx` |
+| Shared state | `web/src/contexts/PortfolioContext.tsx`, `web/src/hooks/usePortfolioStream.ts` |
+| Layouts | `web/src/app/(app)/layout.tsx`, `web/src/app/(admin)/layout.tsx` |
+| Shell | `web/src/components/Shell.tsx` (icons, balance chip, user menu, skip link, responsive nav) |
+| Player pages | `web/src/app/(app)/{dashboard,market,wallet,history,ranking}/page.tsx` + `market/[id]/page.tsx` |
+| Charts | `web/src/components/charts/{PatrimonyChart,PriceChart,AllocationChart,LiveBadge}.tsx` |
+| Onboarding | `web/src/components/OnboardingChecklist.tsx`, `web/src/lib/onboarding.ts` |
+| Public/auth | `web/src/app/{page,login,register}/page.tsx`, `web/src/app/guide/page.tsx` |
+| Admin aligned | wrapper removal in `(admin)` pages; `adminGetEvent` in `web/src/services/api/admin.ts` |
+| P0 fixes | variation uses price change; ranking by `userId`; conditional Top 10; sell deep link; disabled invalid order submit; `/guide` exists; success feedback |
+| Verification | `web: bun run lint`, `npx tsc --noEmit`, `bun run build` all green; `server: ./mvnw test` green (8 tests) |
+| Out of scope | gamification phase 3, URL filter persistence, prototype asset changes |

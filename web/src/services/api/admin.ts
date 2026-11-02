@@ -20,6 +20,9 @@ export function adminDeleteStock(id: number) {
 export function adminListEvents() {
   return apiFetch<MarketEventResponse[]>("/api/admin/events");
 }
+export function adminGetEvent(id: number) {
+  return apiFetch<MarketEventResponse>(`/api/admin/events/${id}`);
+}
 export function adminCreateEvent(data: MarketEventRequest) {
   return apiFetch<MarketEventResponse>("/api/admin/events", { method: "POST", body: JSON.stringify(data) });
 }
